@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -50,7 +51,8 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 0.0f;
+            PlayerPrefs.SetInt("Coins", 0);
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }

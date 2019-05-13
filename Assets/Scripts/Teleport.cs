@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Checkpoint : MonoBehaviour
+public class Teleport : MonoBehaviour
 {
-    private LevelManager levelManager;
+    public Transform teleportTo;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if (collision.tag == "Player")
         {
-            levelManager.currentPos = transform.position;
+            GameObject player = GameObject.FindWithTag("Player");
+            player.transform.position = teleportTo.position;
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        levelManager = FindObjectOfType<LevelManager>();
+        
     }
 
     // Update is called once per frame

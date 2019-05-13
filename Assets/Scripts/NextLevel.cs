@@ -19,10 +19,7 @@ public class NextLevel : MonoBehaviour
     void LoadLevel()
     {
         // Mark level as mastered and save state
-        if(PlayerPrefs.GetInt(sceneToLoad) == 0)
-        {
-            SceneManager.LoadScene(sceneToLoad);
-            PlayerPrefs.SetInt(sceneToLoad, 1);
-        }
+        SceneManager.LoadScene(sceneToLoad);
+        PlayerPrefs.SetInt(sceneToLoad, 1);
     }
 }

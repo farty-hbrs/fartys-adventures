@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 238661425933758796}
   - component: {fileID: 238661425933758798}
   - component: {fileID: 6332252031300621065}
+  - component: {fileID: 7731081451131504561}
+  - component: {fileID: 3285987668915871677}
   m_Layer: 0
   m_Name: EnemyPig
   m_TagString: Untagged
@@ -107,7 +109,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 1.8793764, y: -3.643703}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -118,5 +120,37 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 23.350752, y: 12.69}
+  m_Size: {x: 19.131739, y: 8.164136}
   m_EdgeRadius: 0
+--- !u!58 &7731081451131504561
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238661425933758791}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 4.31, y: -0.86}
+  serializedVersion: 2
+  m_Radius: 6.26
+--- !u!58 &3285987668915871677
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238661425933758791}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -1.02}
+  serializedVersion: 2
+  m_Radius: 6.33

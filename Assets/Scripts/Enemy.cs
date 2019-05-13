@@ -46,6 +46,14 @@ public class Enemy : MonoBehaviour
         lastPos = newPos;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player" && hittable)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player" && hittable)
