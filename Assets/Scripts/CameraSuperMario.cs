@@ -18,10 +18,19 @@ public class CameraSuperMario : MonoBehaviour
     private float cameraZ;
     private float playerX;
     private float playerY;
-    private float m_LastTargetPosition;
+    private float lastX;
+    private bool moveX;
+    private bool movingLeft;
+    private bool movingRight;
+    private float playerXeforeCrossingRightBoundary;
+    private Camera cam;
 
     private void Start()
     {
+        cam = gameObject.GetComponent<Camera>();
+        moveX = true;
+        movingLeft = false;
+        movingRight = false;
         if (!player)
         {
             player = GameObject.FindGameObjectWithTag("Player");
@@ -34,6 +43,7 @@ public class CameraSuperMario : MonoBehaviour
         playerY = player.transform.position.y;
         deltaX = Mathf.Abs(playerX - cameraX);
         deltaY = Mathf.Abs(playerY - cameraY);
+        playerXeforeCrossingRightBoundary = 0f;
     }
 
     private void Update()
@@ -48,12 +58,31 @@ public class CameraSuperMario : MonoBehaviour
 
     private void setCameraPosition()
     {
-        //float xMoveDelta = player.transform.position.x - m_LastTargetPosition;
-        //cameraX = player.transform.position.x + deltaX + offsetX;
         playerX = player.transform.position.x;
         playerY = player.transform.position.y;
 
-        cameraX = playerX + offsetX;
+        movingLeft = playerX < lastX;
+        movingRight = playerX > lastX;
+  
+        lastX = playerX;
+
+        // Screen reaches right border
+        if (movingRight && playerXeforeCrossingRightBoundary == 0 && transform.position.x >= rightCamBoundary.position.x - cam.aspect * cam.orthographicSize)
+        {
+            playerXeforeCrossingRightBoundary = playerX;
+            moveX = false;
+        }
+        // Camera should start following again if going left
+        if (movingLeft && playerX < playerXeforeCrossingRightBoundary)
+        {
+            playerXeforeCrossingRightBoundary = 0f;
+            moveX = true;
+        }
+
+        if (moveX)
+        {
+            cameraX = playerX + offsetX;
+        }
 
         if (marioStyleY)
         {
