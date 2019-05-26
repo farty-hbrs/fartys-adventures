@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float speed;
+    public float speed = 0;
 
     private Vector3 startPos;
     private Vector3 newPos;
@@ -22,8 +22,10 @@ public class Enemy : MonoBehaviour
         lastPos = startPos;
         hittable = true;
         
-        // Random Speed
-        // speed = Random.Range(5f, 10f);
+        if(speed < 0)
+        {
+            speed = Random.Range(3f, 10f);
+        }
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
