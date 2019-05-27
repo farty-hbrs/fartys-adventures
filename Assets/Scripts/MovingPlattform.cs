@@ -5,7 +5,6 @@ using UnityEngine;
 public class MovingPlattform : MonoBehaviour
 {
     public float speed;
-
     private Vector3 startPos;
     private Vector3 newPos;
     private Vector3 lastPos;
@@ -13,14 +12,16 @@ public class MovingPlattform : MonoBehaviour
 
     private GameObject target = null;
     private Vector3 offset;
-    
+
+    // Start is called before the first frame update
     void Start()
     {
         target = null;
         startPos = transform.position;
         lastPos = startPos;
     }
-    
+
+    // Update is called once per frame
     void Update()
     {
         newPos = startPos;

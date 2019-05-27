@@ -4,24 +4,34 @@ using UnityEngine;
 
 public class ParallaxScrolling : MonoBehaviour
 {
+    public GameObject cam;
     public float parallaxEffect;
-
-    private Camera cam;
+    public float smoothness;
     private float length;
     private float startPos;
-    
+
+    // Start is called before the first frame update
     void Start()
     {
-        cam = FindObjectOfType<Camera>();
         startPos = transform.position.x;
         length = GetComponent<SpriteRenderer>().bounds.size.x;
     }
-    
-    void Update()
+
+    // Update is called once per frame
+    void FixedUpdate()
     {
         float tmp = (cam.transform.position.x * (1 - parallaxEffect));
         float dist = cam.transform.position.x * parallaxEffect;
 
         transform.position = new Vector3(startPos + dist, transform.position.y, transform.position.z);
+        /*
+        if (tmp > startPos + length)
+        {
+            startPos += length;
+        }
+        else if (tmp < startPos - length)
+        {
+            startPos -= length;
+        }*/
     }
 }

@@ -53,15 +53,18 @@ public class PlayerMovement : MonoBehaviour
             jumpTimeCounter = jumpTime;
             rb.velocity = Vector2.up * jumpForce;
         }
-        if (marioStyleJump && isJumping && CrossPlatformInputManager.GetButton("Jump")) {
-            if (jumpTimeCounter > 0)
+        if (marioStyleJump) {
+            if (isJumping && CrossPlatformInputManager.GetButton("Jump"))
             {
-                rb.velocity = Vector2.up * jumpForce;
-                jumpTimeCounter -= Time.deltaTime;
-            }
-            else
-            {
-                isJumping = false;
+                if (jumpTimeCounter > 0)
+                {
+                    rb.velocity = Vector2.up * jumpForce;
+                    jumpTimeCounter -= Time.deltaTime;
+                }
+                else
+                {
+                    isJumping = false;
+                }
             }
         }
         if (CrossPlatformInputManager.GetButtonUp("Jump"))

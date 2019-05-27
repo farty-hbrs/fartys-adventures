@@ -1,25 +1,7 @@
 fileFormatVersion: 2
 guid: 2c1d33b6c9ebb58428fc7a52820aed54
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 4301461089015178716
-    second: RightArm
-  - first:
-      213: -6451849013152226336
-    second: LeftArm
-  - first:
-      213: 4355606535353533644
-    second: Head
-  - first:
-      213: -8454071098370414807
-    second: Boddy
-  - first:
-      213: -3008265494427704169
-    second: RightLeg
-  - first:
-      213: -5155842580398584250
-    second: LeftLeg
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -58,7 +40,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -87,194 +69,13 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: RightArm
-      rect:
-        serializedVersion: 2
-        x: 67
-        y: 633
-        width: 132
-        height: 315
-      alignment: 9
-      pivot: {x: 0.33961856, y: 0.8822413}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 943e522f198119c479795825743f7537
-      internalID: 4301461089015178716
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LeftArm
-      rect:
-        serializedVersion: 2
-        x: 249
-        y: 668
-        width: 118
-        height: 268
-      alignment: 9
-      pivot: {x: 0.2420988, y: 0.9097793}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 30a6d70327344484aa86faa7864e20a6
-      internalID: -6451849013152226336
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Head
-      rect:
-        serializedVersion: 2
-        x: 610
-        y: 716
-        width: 319
-        height: 245
-      alignment: 9
-      pivot: {x: 0.49585173, y: 0.14356042}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b537e1c58b29a5c4b8cb9230235264f9
-      internalID: 4355606535353533644
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boddy
-      rect:
-        serializedVersion: 2
-        x: 1039
-        y: 382
-        width: 383
-        height: 428
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2876ba3521da5884b8733595b6d36c7a
-      internalID: -8454071098370414807
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RightLeg
-      rect:
-        serializedVersion: 2
-        x: 18
-        y: 0
-        width: 377
-        height: 539
-      alignment: 9
-      pivot: {x: 0.47894195, y: 0.7823034}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9ab39712211ccd7458813bee46a64e79
-      internalID: -3008265494427704169
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LeftLeg
-      rect:
-        serializedVersion: 2
-        x: 382
-        y: 49
-        width: 300
-        height: 498
-      alignment: 9
-      pivot: {x: 0.4603054, y: 0.7391224}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 734bad80a87d50e40b868404a2885337
-      internalID: -5155842580398584250
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 16981f8ab42b06044bd001e6ccaec146
+    spriteID: e5ea836b80cfddb448848ec51926c4f6
     internalID: 0
     vertices: []
     indices: 
