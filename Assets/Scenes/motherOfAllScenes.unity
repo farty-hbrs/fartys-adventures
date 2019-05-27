@@ -426,8 +426,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   marioStyleJump: 0
   speed: 10
-  circleRadius: 3
-  jumpForce: 3
+  circleRadius: 0.3
+  jumpForce: 10
   jumpTime: 3
   feetPos: {fileID: 1355114680}
   whatIsGround:
