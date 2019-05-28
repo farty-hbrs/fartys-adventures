@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     private Rigidbody2D rb;
+    private Animator anim;
     private float moveInput;
     private float jumpTimeCounter;
     private bool isGrounded;
@@ -25,16 +26,17 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     void FixedUpdate()
     {
         moveInput = CrossPlatformInputManager.GetAxis("Horizontal");
+        anim.SetFloat("speed", Mathf.Abs(moveInput));
+        isGrounded = Physics2D.OverlapCircle(feetPos.position, circleRadius, whatIsGround);
+        anim.SetBool("isGrounded", isGrounded);
         rb.velocity = new Vector2(speed * moveInput, rb.velocity.y);
-    }
-    // Update is called once per frame
-    void Update()
-    {
+
         // Side movement
         if (moveInput > 0)
         {
@@ -46,14 +48,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Jump
-        isGrounded = Physics2D.OverlapCircle(feetPos.position, circleRadius, whatIsGround);
         if (isGrounded && CrossPlatformInputManager.GetButtonDown("Jump"))
         {
             isJumping = true;
             jumpTimeCounter = jumpTime;
             rb.velocity = Vector2.up * jumpForce;
         }
-        if (marioStyleJump && isJumping && CrossPlatformInputManager.GetButton("Jump")) {
+        if (marioStyleJump && isJumping && CrossPlatformInputManager.GetButton("Jump"))
+        {
             if (jumpTimeCounter > 0)
             {
                 rb.velocity = Vector2.up * jumpForce;
@@ -68,5 +70,10 @@ public class PlayerMovement : MonoBehaviour
         {
             isJumping = false;
         }
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }
