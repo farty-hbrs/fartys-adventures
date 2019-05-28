@@ -5,13 +5,12 @@ using UnityEngine;
 public class CameraSuperMario : MonoBehaviour
 {
     public GameObject player;
-    public Transform rightCamBoundary;
-    public Transform levelEnd;
+    public Transform leftCamBound;
+    public Transform rightCamBound;
     public bool marioStyleY;
     public float offsetX;
     public float offsetY;
-
-    private float deltaX;
+    
     private float deltaY;
     private float cameraX;
     private float cameraY;
@@ -22,36 +21,37 @@ public class CameraSuperMario : MonoBehaviour
     private bool moveX;
     private bool movingLeft;
     private bool movingRight;
-    private float playerXeforeCrossingRightBoundary;
+    private bool crossedLeftBound;
+    private bool crossedRightBound;
+    private float playerXBeforeCrossingLeftBound;
+    private float playerXBeforeCrossingRightBound;
     private Camera cam;
 
     private void Start()
     {
-        cam = gameObject.GetComponent<Camera>();
-        moveX = true;
-        movingLeft = false;
-        movingRight = false;
         if (!player)
         {
             player = GameObject.FindGameObjectWithTag("Player");
         }
-
+        cam = gameObject.GetComponent<Camera>();
         cameraX = transform.position.x + offsetX;
         cameraY = transform.position.y + offsetY;
         cameraZ = transform.position.z;
+
         playerX = player.transform.position.x;
         playerY = player.transform.position.y;
-        deltaX = Mathf.Abs(playerX - cameraX);
         deltaY = Mathf.Abs(playerY - cameraY);
-        playerXeforeCrossingRightBoundary = 0f;
+
+        moveX = true;
+        movingLeft = false;
+        movingRight = false;
+        crossedLeftBound = false;
+        crossedRightBound = false;
+        playerXBeforeCrossingLeftBound = 0f;
+        playerXBeforeCrossingRightBound = 0f;
     }
 
     private void Update()
-    {
-        setCameraPosition();
-    }
-
-    private void LateUpdate()
     {
         setCameraPosition();
     }
@@ -66,18 +66,7 @@ public class CameraSuperMario : MonoBehaviour
   
         lastX = playerX;
 
-        // Screen reaches right border
-        if (movingRight && playerXeforeCrossingRightBoundary == 0 && transform.position.x >= rightCamBoundary.position.x - cam.aspect * cam.orthographicSize)
-        {
-            playerXeforeCrossingRightBoundary = playerX;
-            moveX = false;
-        }
-        // Camera should start following again if going left
-        if (movingLeft && playerX < playerXeforeCrossingRightBoundary)
-        {
-            playerXeforeCrossingRightBoundary = 0f;
-            moveX = true;
-        }
+        CheckBoundsCrossed();
 
         if (moveX)
         {
@@ -86,26 +75,54 @@ public class CameraSuperMario : MonoBehaviour
 
         if (marioStyleY)
         {
-            yFollow();
+            if (playerY < transform.position.y - deltaY)
+            {
+                cameraY = playerY + deltaY;
+            }
+            else if (playerY > transform.position.y + deltaY)
+            {
+                cameraY = playerY - deltaY;
+            }
         }
         else
         {
             cameraY = playerY + deltaY;
         }
+
         cameraY += offsetY;
 
         transform.position = new Vector3(cameraX, cameraY, cameraZ);
     }
 
-    private void yFollow()
+    private void CheckBoundsCrossed()
     {
-        if(playerY < transform.position.y - deltaY)
+        // Screen reaches left border
+        if (movingLeft && playerXBeforeCrossingLeftBound == 0 && cameraX <= leftCamBound.position.x + cam.aspect * cam.orthographicSize)
         {
-            cameraY = playerY + deltaY;
+            playerXBeforeCrossingLeftBound = playerX;
+            moveX = false;
+            crossedLeftBound = true;
         }
-        else if (playerY > transform.position.y + deltaY)
+        // Screen reaches right border
+        if (movingRight && playerXBeforeCrossingRightBound == 0 && cameraX >= rightCamBound.position.x - cam.aspect * cam.orthographicSize)
         {
-            cameraY = playerY - deltaY;
+            playerXBeforeCrossingRightBound = playerX;
+            crossedRightBound = true;
+            moveX = false;
+        }
+        // Camera should start following again if going left
+        if (crossedRightBound && movingLeft && playerX < playerXBeforeCrossingRightBound)
+        {
+            playerXBeforeCrossingRightBound = 0f;
+            crossedRightBound = false;
+            moveX = true;
+        }
+        // Camera should start following again if going left
+        if (crossedLeftBound && movingRight && playerX > playerXBeforeCrossingLeftBound)
+        {
+            playerXBeforeCrossingLeftBound = 0f;
+            crossedLeftBound = false;
+            moveX = true;
         }
     }
 }
