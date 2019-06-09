@@ -18,11 +18,11 @@ public class LevelManager : MonoBehaviour
     
     void Start()
     {
-        lives = PlayerPrefs.GetInt("Lives");
+        lives = PlayerPrefs.GetInt("Lives", 0);
         lives = lives > 0 ? lives : 5;
         livesText.text = lives.ToString();
 
-        coins = PlayerPrefs.GetInt("Coins");
+        coins = PlayerPrefs.GetInt("Coins", 0);
         coins = coins > 0 ? coins : 0;
         coinsText.text = coins.ToString();
     }
