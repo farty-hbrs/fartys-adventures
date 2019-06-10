@@ -5,11 +5,9 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public bool marioStyleJump;
     public float speed = 10;
-    public float circleRadius = 3;
+    public float circleRadius = 0.1f;
     public float jumpForce = 3;
-    public float jumpTime = 3;
     public Transform feetPos;
     public LayerMask whatIsGround;
 
@@ -17,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private float moveInput;
-    private float jumpTimeCounter;
     private bool isGrounded;
     private bool isJumping;
     
@@ -51,28 +48,12 @@ public class PlayerMovement : MonoBehaviour
         // Jump
         if (isGrounded && CrossPlatformInputManager.GetButtonDown("Jump"))
         {
+            
             anim.SetTrigger("takeOff");
             isJumping = true;
-            jumpTimeCounter = jumpTime;
             rb.velocity = Vector2.up * jumpForce;
         }
         else if (isGrounded) {
-            isJumping = false;
-        }
-        if (marioStyleJump && isJumping && CrossPlatformInputManager.GetButton("Jump"))
-        {
-            if (jumpTimeCounter > 0)
-            {
-                rb.velocity = Vector2.up * jumpForce;
-                jumpTimeCounter -= Time.deltaTime;
-            }
-            else
-            {
-                isJumping = false;
-            }
-        }
-        if (CrossPlatformInputManager.GetButtonUp("Jump"))
-        {
             isJumping = false;
         }
         anim.SetBool("isJumping", isJumping);
