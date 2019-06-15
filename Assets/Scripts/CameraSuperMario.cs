@@ -26,6 +26,7 @@ public class CameraSuperMario : MonoBehaviour
     private float playerXBeforeCrossingLeftBound;
     private float playerXBeforeCrossingRightBound;
     private Camera cam;
+    private bool toggleMoveX;
 
     private void Start()
     {
@@ -43,6 +44,7 @@ public class CameraSuperMario : MonoBehaviour
         deltaY = Mathf.Abs(playerY - cameraY);
 
         moveX = true;
+        toggleMoveX = true;
         movingLeft = false;
         movingRight = false;
         crossedLeftBound = false;
@@ -68,7 +70,7 @@ public class CameraSuperMario : MonoBehaviour
 
         CheckBoundsCrossed();
 
-        if (moveX)
+        if (moveX && toggleMoveX)
         {
             cameraX = playerX + offsetX;
         }
@@ -124,5 +126,10 @@ public class CameraSuperMario : MonoBehaviour
             crossedLeftBound = false;
             moveX = true;
         }
+    }
+
+    public void toggleXMovement()
+    {
+        toggleMoveX = !toggleMoveX;
     }
 }
