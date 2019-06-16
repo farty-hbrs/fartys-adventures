@@ -547,8 +547,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &820271300
-BoxCollider2D:
+--- !u!58 &3335695555152857933
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -560,7 +560,23 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 5.42}
+  m_Offset: {x: 0.51, y: 0.8}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!60 &4239039360078772870
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8695050944259336656}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.37, y: 6.63}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -570,9 +586,43 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.97, y: 10.06}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.2715299, y: 0.71177006}
+      - {x: 1.0421141, y: 1.1099243}
+      - {x: 0.6171123, y: 1.6944561}
+      - {x: 0.73679173, y: 1.9144068}
+      - {x: 1.0765342, y: 2.0668259}
+      - {x: 1.3140262, y: 2.631137}
+      - {x: 0.8981103, y: 3.671733}
+      - {x: 0.16060472, y: 3.902629}
+      - {x: -0.48607934, y: 3.773034}
+      - {x: -0.8903949, y: 3.3087168}
+      - {x: -0.8895378, y: 2.9485836}
+      - {x: -0.7229428, y: 2.4043941}
+      - {x: -0.46876457, y: 2.0882158}
+      - {x: -0.2525302, y: 1.8648462}
+      - {x: -0.5719102, y: 1.7082157}
+      - {x: -1.0356369, y: 1.4045534}
+      - {x: -1.4301428, y: 1.0073576}
+      - {x: -1.758266, y: 0.44956064}
+      - {x: -1.8919837, y: -0.14168167}
+      - {x: -1.9146892, y: -0.675251}
+      - {x: -2.1381238, y: -1.5610671}
+      - {x: -2.2465649, y: -2.1410613}
+      - {x: -1.9533378, y: -2.707801}
+      - {x: -1.5465649, y: -3.0815105}
+      - {x: -0.85614645, y: -4.588483}
+      - {x: -0.48773652, y: -5.374795}
+      - {x: 0.7264104, y: -5.3210983}
+      - {x: 0.7425251, y: -4.4753256}
+      - {x: 0.8910816, y: -2.9055707}
+      - {x: 0.8728906, y: -2.2168517}
+      - {x: 1.0848773, y: -1.8583903}
+      - {x: 1.4219148, y: -1.4318304}
+      - {x: 1.588586, y: -0.91362095}
+      - {x: 1.5947195, y: -0.3858881}
+      - {x: 1.5085839, y: 0.17135715}
 --- !u!95 &820271297
 Animator:
   serializedVersion: 3

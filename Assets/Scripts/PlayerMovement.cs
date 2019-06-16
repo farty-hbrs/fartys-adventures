@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveInput;
     private bool isGrounded;
     private bool isJumping;
+    private bool pressedJump;
     
 
     // Start is called before the first frame update
@@ -24,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        pressedJump = false;
+        isJumping = false;
     }
 
     void FixedUpdate()
@@ -46,9 +49,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Jump
-        if (isGrounded && CrossPlatformInputManager.GetButtonDown("Jump"))
+        if (isGrounded && pressedJump)
         {
-            
+            pressedJump = false;
             anim.SetTrigger("takeOff");
             isJumping = true;
             rb.velocity = Vector2.up * jumpForce;
@@ -61,6 +64,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(CrossPlatformInputManager.GetButtonDown("Jump") && !isJumping)
+        {
+            pressedJump = true;
+        }
     }
 }
