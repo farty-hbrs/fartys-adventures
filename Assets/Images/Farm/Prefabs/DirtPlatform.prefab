@@ -642,6 +642,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3360417484601184542}
   - component: {fileID: 4480973485510575407}
+  - component: {fileID: 1690391775191320174}
   m_Layer: 8
   m_Name: DirtPlatform
   m_TagString: Untagged
@@ -680,7 +681,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 8942522744017298648}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a3785cd9867056a40b51d030e234fc9b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -696,4 +697,30 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 31.95, y: 9.18}
+  m_EdgeRadius: 0
+--- !u!61 &1690391775191320174
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8942522744017298648}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 3.74, y: 2.68}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 28.96, y: 1}
   m_EdgeRadius: 0
