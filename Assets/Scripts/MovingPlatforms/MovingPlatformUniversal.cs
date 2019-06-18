@@ -66,19 +66,31 @@ public class MovingPlatformUniversal : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col)
     {
-        target = col.gameObject;
-        offset = target.transform.position - transform.position;
+        if(col.gameObject.tag == "Player")
+        {
+            target = col.gameObject;
+            offset = target.transform.position - transform.position;
+        }
     }
     void OnTriggerExit2D(Collider2D col)
     {
-        target = null;
+        if (col.gameObject.tag == "Player")
+        {
+            target = null;
+        }
     }
 
     void LateUpdate()
     {
-        if (target != null)
+        if (target != null && (direction == Direction.Right || direction == Direction.Left))
         {
-            target.transform.position = transform.position + offset;
+            float x = transform.position.x + offset.x;
+            target.transform.position = new Vector3(x, target.transform.position.y, target.transform.position.z);
+        }
+        if (target != null && (direction == Direction.Up || direction == Direction.Down))
+        {
+            float y = transform.position.y + offset.y;
+            target.transform.position = new Vector3(target.transform.position.x, y, target.transform.position.z);
         }
     }
 }
