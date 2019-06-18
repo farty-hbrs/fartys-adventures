@@ -8,7 +8,8 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 10;
     public float circleRadius = 0.1f;
     public float jumpForce = 3;
-    public Transform feetPos;
+    public Transform feetPosTopLeft;
+    public Transform feetPosBottomRight;
     public LayerMask whatIsGround;
 
 
@@ -33,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {
         moveInput = CrossPlatformInputManager.GetAxis("Horizontal");
         anim.SetFloat("speed", Mathf.Abs(moveInput));
-        isGrounded = Physics2D.OverlapCircle(feetPos.position, circleRadius, whatIsGround);
+        isGrounded = Physics2D.OverlapArea(feetPosTopLeft.position, feetPosBottomRight.position, whatIsGround);
         anim.SetBool("isGrounded", isGrounded);
 
         rb.velocity = new Vector2(speed * moveInput, rb.velocity.y);
