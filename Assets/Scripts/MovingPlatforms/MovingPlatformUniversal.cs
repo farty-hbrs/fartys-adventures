@@ -82,15 +82,9 @@ public class MovingPlatformUniversal : MonoBehaviour
 
     void LateUpdate()
     {
-        if (target != null && (direction == Direction.Right || direction == Direction.Left))
+        if (target != null)
         {
-            float x = transform.position.x + offset.x;
-            target.transform.position = new Vector3(x, target.transform.position.y, target.transform.position.z);
-        }
-        if (target != null && (direction == Direction.Up || direction == Direction.Down))
-        {
-            float y = transform.position.y + offset.y;
-            target.transform.position = new Vector3(target.transform.position.x, y, target.transform.position.z);
+            target.transform.position = transform.position + offset;
         }
     }
 }

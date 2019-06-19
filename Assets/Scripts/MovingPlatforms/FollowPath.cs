@@ -14,11 +14,17 @@ public class FollowPath : MonoBehaviour
     public PathDefinition path;
     public float speed = 5;
     public float maxDistanceToGoal = .1f;
+    public bool startWhenPlayerJumpsOn = false;
+    public bool fallDownAtEnd = false;
+
     private IEnumerator<Transform> currentPoint;
+    private GameObject target = null;
+    private Vector3 offset;
+    private bool playerJumpedOn = false;
 
     void Start()
     {
-        if(path == null)
+        if (path == null)
         {
             return;
         }
@@ -36,7 +42,7 @@ public class FollowPath : MonoBehaviour
 
     void Update()
     {
-        if(currentPoint == null || currentPoint.Current == null)
+        if(currentPoint == null || currentPoint.Current == null || (startWhenPlayerJumpsOn && !playerJumpedOn))
         {
             return;
         }
@@ -53,7 +59,37 @@ public class FollowPath : MonoBehaviour
         float distanceSquared = (transform.position - currentPoint.Current.position).sqrMagnitude;
         if(distanceSquared < maxDistanceToGoal * maxDistanceToGoal)
         {
+            if (fallDownAtEnd && currentPoint.Current == path.points[path.points.Length - 1])
+            {
+                GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                return;
+            }
             currentPoint.MoveNext();
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            target = col.gameObject;
+            offset = target.transform.position - transform.position;
+            playerJumpedOn = true;
+        }
+    }
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            target = null;
+        }
+    }
+
+    void LateUpdate()
+    {
+        if(target != null)
+        {
+            target.transform.position = transform.position + offset;
         }
     }
 }
