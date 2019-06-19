@@ -44,15 +44,11 @@ public class hiddenSpike : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            levelmanger.RespawnPlayer();
+            //levelmanger.RespawnPlayer();
+            Scene scene;
+            scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
         }
     }
-    public void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            levelmanger.RespawnPlayer();
-        }
-    }
-
+    
 }

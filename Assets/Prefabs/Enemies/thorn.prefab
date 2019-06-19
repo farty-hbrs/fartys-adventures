@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2237392786680497904}
   - component: {fileID: 4868817397502619616}
   - component: {fileID: 8997473833148942375}
+  - component: {fileID: 5909135257203724200}
   m_Layer: 0
   m_Name: thorn
   m_TagString: MovingPlatform
@@ -93,7 +94,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.12, y: 0.97062945}
+  m_Offset: {x: -1.1039975, y: 1.0665921}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -104,5 +105,19 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.82357955, y: 2.1671367}
+  m_Size: {x: 0.5353546, y: 1.4268508}
   m_EdgeRadius: 0
+--- !u!114 &5909135257203724200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3195821588106459720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c268a6c99a4bf241910909dc0943425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  distance: 1.5
