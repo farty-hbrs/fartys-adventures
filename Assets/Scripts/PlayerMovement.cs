@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(CrossPlatformInputManager.GetButtonDown("Jump") && !isJumping)
+        if(CrossPlatformInputManager.GetButtonDown("Jump") && isGrounded && !isJumping)
         {
             pressedJump = true;
         }
