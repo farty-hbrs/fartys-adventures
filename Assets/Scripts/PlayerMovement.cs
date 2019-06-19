@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private bool isJumping;
     private bool pressedJump;
+    private bool moveX;
     
 
     // Start is called before the first frame update
@@ -28,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         pressedJump = false;
         isJumping = false;
+        moveX = true;
     }
 
     void FixedUpdate()
@@ -37,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics2D.OverlapArea(feetPosTopLeft.position, feetPosBottomRight.position, whatIsGround);
         anim.SetBool("isGrounded", isGrounded);
 
-        if(isGrounded || isJumping)
+        if (moveX)
         {
             rb.velocity = new Vector2(speed * moveInput, rb.velocity.y);
         }
@@ -72,5 +74,10 @@ public class PlayerMovement : MonoBehaviour
         {
             pressedJump = true;
         }
+    }
+
+    public void SetMoveX(bool moveX)
+    {
+        this.moveX = moveX;
     }
 }
