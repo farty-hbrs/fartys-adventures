@@ -37,7 +37,10 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics2D.OverlapArea(feetPosTopLeft.position, feetPosBottomRight.position, whatIsGround);
         anim.SetBool("isGrounded", isGrounded);
 
-        rb.velocity = new Vector2(speed * moveInput, rb.velocity.y);
+        if(isGrounded || isJumping)
+        {
+            rb.velocity = new Vector2(speed * moveInput, rb.velocity.y);
+        }
 
         // Side movement
         if (moveInput > 0)

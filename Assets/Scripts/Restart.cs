@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Restart : MonoBehaviour
 {
-    public GameObject target;
-
     private LevelManager levelManager;
     
     void Start()
@@ -16,7 +14,7 @@ public class Restart : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision == target.GetComponent<Collider2D>())
+        if (collision.gameObject.tag == "Player")
         {
             levelManager.RespawnPlayer();
         }
