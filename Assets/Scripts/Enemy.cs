@@ -5,6 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float speed = 0;
+    private float a = 0;
+    private bool flip = false;
 
     private Vector3 startPos;
     private Vector3 newPos;
@@ -33,16 +35,28 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         newPos = startPos;
-        newPos.x = newPos.x + Mathf.PingPong(Time.time * speed, 6) - 3;
+        newPos.x += Mathf.PingPong(Time.time * speed, 6) - 3;
+        a = Mathf.PingPong(Time.time * speed, 6) - 3;
         transform.position = newPos;
-
-        if(newPos.x > lastPos.x)
+        Debug.Log(a);
+        /*if(newPos.x > lastPos.x)
         {
-            spriteRenderer.flipX = false;
+            Flip();
         }
         else
         {
-            spriteRenderer.flipX = true;
+            Flip();
+        }*/
+        
+        if(a > 2.95 || a < -2.95)
+        {
+            flip = true;
+        }
+
+        if (flip)
+        {
+            Flip();
+            flip = false;
         }
 
         lastPos = newPos;
@@ -70,5 +84,12 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         hittable =  true;
+    }
+
+    void Flip()
+    {
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 }
