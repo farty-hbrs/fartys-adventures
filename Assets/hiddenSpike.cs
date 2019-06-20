@@ -40,15 +40,6 @@ public class hiddenSpike : MonoBehaviour
         newPos.y += Mathf.PingPong(Time.time * speed, distance) - distance / 2;
     }
      
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            //levelmanger.RespawnPlayer();
-            Scene scene;
-            scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
-        }
-    }
+    
     
 }
