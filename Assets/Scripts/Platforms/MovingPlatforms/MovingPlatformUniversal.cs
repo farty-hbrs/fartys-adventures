@@ -66,12 +66,18 @@ public class MovingPlatformUniversal : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col)
     {
-        target = col.gameObject;
-        offset = target.transform.position - transform.position;
+        if(col.gameObject.tag == "Player")
+        {
+            target = col.gameObject;
+            offset = target.transform.position - transform.position;
+        }
     }
     void OnTriggerExit2D(Collider2D col)
     {
-        target = null;
+        if (col.gameObject.tag == "Player")
+        {
+            target = null;
+        }
     }
 
     void LateUpdate()

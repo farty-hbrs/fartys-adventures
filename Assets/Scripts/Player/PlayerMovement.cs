@@ -8,7 +8,8 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 10;
     public float circleRadius = 0.1f;
     public float jumpForce = 3;
-    public Transform feetPos;
+    public Transform feetPosTopLeft;
+    public Transform feetPosBottomRight;
     public LayerMask whatIsGround;
 
 
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private bool isJumping;
     private bool pressedJump;
+    private bool moveX;
     
 
     // Start is called before the first frame update
@@ -27,16 +29,20 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         pressedJump = false;
         isJumping = false;
+        moveX = true;
     }
 
     void FixedUpdate()
     {
         moveInput = CrossPlatformInputManager.GetAxis("Horizontal");
         anim.SetFloat("speed", Mathf.Abs(moveInput));
-        isGrounded = Physics2D.OverlapCircle(feetPos.position, circleRadius, whatIsGround);
+        isGrounded = Physics2D.OverlapArea(feetPosTopLeft.position, feetPosBottomRight.position, whatIsGround);
         anim.SetBool("isGrounded", isGrounded);
 
-        rb.velocity = new Vector2(speed * moveInput, rb.velocity.y);
+        if (moveX)
+        {
+            rb.velocity = new Vector2(speed * moveInput, rb.velocity.y);
+        }
 
         // Side movement
         if (moveInput > 0)
@@ -64,9 +70,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(CrossPlatformInputManager.GetButtonDown("Jump") && !isJumping)
+        if(CrossPlatformInputManager.GetButtonDown("Jump") && isGrounded && !isJumping)
         {
             pressedJump = true;
         }
+    }
+
+    public void SetMoveX(bool moveX)
+    {
+        this.moveX = moveX;
     }
 }
