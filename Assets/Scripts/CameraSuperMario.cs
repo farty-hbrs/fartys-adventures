@@ -81,9 +81,9 @@ public class CameraSuperMario : MonoBehaviour
             {
                 cameraY = playerY + deltaY;
             }
-            else if (playerY > transform.position.y + deltaY)
+            else if (playerY > transform.position.y + (deltaY / 3))
             {
-                cameraY = playerY - deltaY;
+                cameraY = playerY - (deltaY / 3);
             }
         }
         else

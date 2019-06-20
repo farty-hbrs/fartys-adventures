@@ -6,7 +6,7 @@ public class ToggleXMovement : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.gameObject.tag == "Player")
         {
             Camera cam = FindObjectOfType<Camera>();
             cam.GetComponent<CameraSuperMario>().toggleXMovement();
