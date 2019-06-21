@@ -31824,7 +31824,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   path: {fileID: 666781897}
-  speed: 5
+  speed: 8
   maxDistanceToGoal: 0.1
   startWhenPlayerJumpsOn: 0
   fallDownAtEnd: 0
@@ -35702,7 +35702,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298858514}
   m_LocalRotation: {x: 0.007569575, y: -0.06119186, z: -0.004640208, w: -0.99808663}
-  m_LocalPosition: {x: 78.5, y: -7.58, z: -16.58}
+  m_LocalPosition: {x: 78.5, y: -7.58, z: -16.6}
   m_LocalScale: {x: 5.285837, y: 4.6743817, z: 1}
   m_Children: []
   m_Father: {fileID: 1826808902}
@@ -50645,7 +50645,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1831853702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.22, y: 3, z: 0}
+  m_LocalPosition: {x: -15, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 666781898}
