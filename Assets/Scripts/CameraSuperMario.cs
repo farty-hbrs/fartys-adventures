@@ -18,6 +18,8 @@ public class CameraSuperMario : MonoBehaviour
     private float playerX;
     private float playerY;
     private float lastX;
+    private float startYPlayer;
+    private float startYCamera;
     private bool moveX;
     private bool movingLeft;
     private bool movingRight;
@@ -42,6 +44,8 @@ public class CameraSuperMario : MonoBehaviour
         playerX = player.transform.position.x;
         playerY = player.transform.position.y;
         deltaY = Mathf.Abs(playerY - cameraY);
+        startYPlayer = playerY;
+        startYCamera = transform.position.y;
 
         moveX = true;
         toggleMoveX = true;
@@ -77,6 +81,10 @@ public class CameraSuperMario : MonoBehaviour
 
         if (marioStyleY)
         {
+            if (playerY == startYPlayer)
+            {
+                cameraY = playerY + deltaY;
+            }
             if (playerY < transform.position.y - deltaY)
             {
                 cameraY = playerY + deltaY;
