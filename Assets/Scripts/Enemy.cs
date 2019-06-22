@@ -38,7 +38,6 @@ public class Enemy : MonoBehaviour
         newPos.x += Mathf.PingPong(Time.time * speed, 6) - 3;
         a = Mathf.PingPong(Time.time * speed, 6) - 3;
         transform.position = newPos;
-        Debug.Log(a);
         /*if(newPos.x > lastPos.x)
         {
             Flip();
