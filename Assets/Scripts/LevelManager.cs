@@ -15,7 +15,21 @@ public class LevelManager : MonoBehaviour
 
     private int lives;
     private int coins;
-    
+    private static LevelManager instance;
+
+    void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
         lives = PlayerPrefs.GetInt("Lives", 0);

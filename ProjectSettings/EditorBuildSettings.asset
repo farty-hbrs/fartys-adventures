@@ -12,9 +12,18 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelMenu.unity
     guid: 805d0fa43bd62444a9c8e0db40dc752b
   - enabled: 1
-    path: Assets/Scenes/scene00.unity
-    guid: fb26d806d50c3a949afed2191bc072c9
+    path: Assets/Scenes/Hayascene.unity
+    guid: ebe56642c4adb6d42a0ac140a61cacfb
   - enabled: 1
-    path: Assets/Scenes/scene01.unity
-    guid: f585c6e4e575e3e49a220f42b56cf08b
+    path: Assets/Scenes/Marco.unity
+    guid: fde1bb316312c5649b0fb1bde15db457
+  - enabled: 1
+    path: Assets/Scenes/Abdiscene01.unity
+    guid: 4e61545cce4555244ac43e5e0e1ebd4e
+  - enabled: 1
+    path: Assets/Scenes/DanielsScene.unity
+    guid: 3fa0f8508872f6b46a15dac6a65a5703
+  - enabled: 1
+    path: Assets/Scenes/AxelScene.unity
+    guid: a75d0b8a54d804f48b287247d6675e4c
   m_configObjects: {}

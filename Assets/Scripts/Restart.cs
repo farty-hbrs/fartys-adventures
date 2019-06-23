@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Restart : MonoBehaviour
 {
+    public bool restartScene;
     private LevelManager levelManager;
     
     void Start()
@@ -16,6 +17,10 @@ public class Restart : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            if (restartScene)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
             levelManager.RespawnPlayer();
         }
     }
