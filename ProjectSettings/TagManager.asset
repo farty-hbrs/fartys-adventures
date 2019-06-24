@@ -9,6 +9,7 @@ TagManager:
   - Killzone
   - MovingPlatform
   - Jumppad
+  - Bull
   layers:
   - Default
   - TransparentFX
