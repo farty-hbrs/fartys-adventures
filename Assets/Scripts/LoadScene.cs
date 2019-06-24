@@ -14,7 +14,7 @@ public class LoadScene : MonoBehaviour
         if (this.GetComponent<Button>() != null)
         {
             // Activate first level (new game)
-            PlayerPrefs.SetInt("scene00", 1);
+            PlayerPrefs.SetInt("Hayascene", 1);
 
             // If script is attached to a button make it unclickable if level is not unlocked yet
             if (PlayerPrefs.GetInt(sceneToLoad) == 1)

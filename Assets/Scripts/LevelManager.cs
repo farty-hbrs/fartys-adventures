@@ -49,10 +49,6 @@ public class LevelManager : MonoBehaviour
         {
             RespawnPlayer();
         }
-        if(CrossPlatformInputManager.GetButtonDown("Cancel"))
-        {
-            Application.Quit();
-        }
     }
 
     public void RespawnPlayer()

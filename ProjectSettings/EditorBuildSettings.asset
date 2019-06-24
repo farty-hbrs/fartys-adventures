@@ -7,10 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
-    guid: ab02269f59a87ac4ba31765c062a49af
-  - enabled: 1
-    path: Assets/Scenes/LevelMenu.unity
-    guid: 805d0fa43bd62444a9c8e0db40dc752b
+    guid: 49ca52a009923794589f5291928db430
   - enabled: 1
     path: Assets/Scenes/Hayascene.unity
     guid: ebe56642c4adb6d42a0ac140a61cacfb
