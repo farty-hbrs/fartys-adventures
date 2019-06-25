@@ -4,18 +4,53 @@ using UnityEngine;
 
 public class EnemyFollow : MonoBehaviour
 {
+    public float speed = 4;
+    public float minDist = 10;
+    public float maxDist = 1;
 
-    private Rigidbody2D rb;
+    private Transform player;
+    private bool facingLeft;
 
-    // Start is called before the first frame update
+
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        facingLeft = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(3, rb.velocity.y);
+        //transform.LookAt(player.transform);
+
+        if (transform.position.x > player.position.x && !facingLeft)
+        {
+            Flip();
+        }
+        if (transform.position.x < player.position.x && facingLeft)
+        {
+            Flip();
+        }
+
+        if (Mathf.Abs(transform.position.x - player.position.x) >= minDist)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(player.position.x, transform.position.y), speed * Time.deltaTime);
+            //transform.position += transform.forward * MoveSpeed * Time.deltaTime;
+
+
+
+            if (Mathf.Abs(transform.position.x - player.position.x) <= maxDist)
+            {
+                // If the enemy can shoot or something like that you can implement it here
+            }
+
+        }
+    }
+
+    void Flip()
+    {
+        facingLeft = !facingLeft;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 }
