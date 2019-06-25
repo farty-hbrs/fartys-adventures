@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform feetPosTopLeft;
     public Transform feetPosBottomRight;
     public LayerMask whatIsGround;
+    public GameObject levelEnd;
+    public GameObject nextLevelTrigger;
 
 
     private Rigidbody2D rb;
@@ -20,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping;
     private bool pressedJump;
     private bool moveX;
+    private bool reachedLevelEnd;
     
 
     // Start is called before the first frame update
@@ -30,11 +33,26 @@ public class PlayerMovement : MonoBehaviour
         pressedJump = false;
         isJumping = false;
         moveX = true;
+        reachedLevelEnd = false;
     }
 
     void FixedUpdate()
     {
-        moveInput = CrossPlatformInputManager.GetAxis("Horizontal");
+        if (reachedLevelEnd)
+        {
+            if(transform.position.x < nextLevelTrigger.transform.position.x && moveX)
+            {
+                moveInput = 1;
+            }
+            else
+            {
+                moveInput = 0;
+            }
+        }
+        else
+        {
+            moveInput = CrossPlatformInputManager.GetAxis("Horizontal");
+        }
         anim.SetFloat("speed", Mathf.Abs(moveInput));
         isGrounded = Physics2D.OverlapArea(feetPosTopLeft.position, feetPosBottomRight.position, whatIsGround);
         anim.SetBool("isGrounded", isGrounded);
@@ -55,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Jump
-        if (isGrounded && pressedJump)
+        if (isGrounded && pressedJump && !reachedLevelEnd)
         {
             pressedJump = false;
             anim.SetTrigger("takeOff");
@@ -74,6 +92,26 @@ public class PlayerMovement : MonoBehaviour
         {
             pressedJump = true;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject == levelEnd)
+        {
+            Destroy(levelEnd);
+            rb.velocity = new Vector2(0, rb.velocity.y);
+            moveX = false;
+            reachedLevelEnd = true;
+            anim.SetTrigger("LevelEnd");
+            StartCoroutine(FreezePlayer());
+        }
+    }
+
+    IEnumerator FreezePlayer()
+    {
+        yield return new WaitForSeconds(1.5f);
+        moveX = true;
+
     }
 
     public void SetMoveX(bool moveX)
