@@ -9,9 +9,7 @@ public class Spiketrap : MonoBehaviour
 
     private void Start()
     {
-        Spike1.SetActive(false);
-        Spike2.SetActive(false);
-        Spike3.SetActive(false);
+        deactivateTraps();
     }
 
     // Start is called before the first frame update
@@ -20,6 +18,7 @@ public class Spiketrap : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Invoke("activateTraps", 0.1f);
+            Invoke("deactivateTraps", 0.2f);
         }
     }
 
@@ -32,5 +31,14 @@ public class Spiketrap : MonoBehaviour
             Spike3.SetActive(true);
 
         
+    }
+    void deactivateTraps()
+    {
+
+        Spike1.SetActive(false);
+        Spike2.SetActive(false);
+        Spike3.SetActive(false);
+
+
     }
 }
