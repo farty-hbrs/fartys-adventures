@@ -447,10 +447,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  minDist: 5
-  maxDist: 1
+  minDist: 2
+  maxDist: 10
   killCollider: {fileID: 1178986697622156918}
   hitsToKill: 1
+  target: {fileID: 0}
 --- !u!1 &2739428171167708929
 GameObject:
   m_ObjectHideFlags: 0

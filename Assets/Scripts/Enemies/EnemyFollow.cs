@@ -10,18 +10,22 @@ public class EnemyFollow : MonoBehaviour
     public Collider2D killCollider;
 
     public float hitsToKill = 1;
-    
-    private GameObject player;
+    public GameObject target;
+
     private bool facingLeft;
     private bool hittable;
     private LevelManager levelManager;
     private Rigidbody2D rbPlayer;
+    private Rigidbody2D rbEnemy;
+    private PlayerMovement pmPlayer;
 
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
-        rbPlayer = player.GetComponent<Rigidbody2D>();
+        target = GameObject.FindWithTag("Player");
+        rbPlayer = target.GetComponent<Rigidbody2D>();
+        rbEnemy = GetComponent<Rigidbody2D>();
+        pmPlayer = target.GetComponent<PlayerMovement>();
         levelManager = FindObjectOfType<LevelManager>();
         facingLeft = true;
         hittable = true;
@@ -31,23 +35,23 @@ public class EnemyFollow : MonoBehaviour
     {
         //transform.LookAt(player.transform);
 
-        if (transform.position.x > player.transform.position.x && !facingLeft)
+        if (transform.position.x > target.transform.position.x && !facingLeft)
         {
             Flip();
         }
-        if (transform.position.x < player.transform.position.x && facingLeft)
+        if (transform.position.x < target.transform.position.x && facingLeft)
         {
             Flip();
         }
 
-        if (Mathf.Abs(transform.position.x - player.transform.position.x) >= minDist)
+        if (Mathf.Abs(transform.position.x - target.transform.position.x) >= minDist && hittable)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(player.transform.position.x, transform.position.y), speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.transform.position.x, transform.position.y), speed * Time.deltaTime);
             //transform.position += transform.forward * MoveSpeed * Time.deltaTime;
 
 
 
-            if (Mathf.Abs(transform.position.x - player.transform.position.x) <= maxDist)
+            if (Mathf.Abs(transform.position.x - target.transform.position.x) <= maxDist)
             {
                 // If the enemy can shoot or something like that you can implement it here
             }
@@ -55,11 +59,42 @@ public class EnemyFollow : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player" && hittable)
+        {
+            if (hitsToKill == 1)
+            {
+                Destroy(gameObject);
+            }
+            if (rbPlayer.velocity.y <= 0)
+            {
+                rbPlayer.velocity = new Vector2(rbPlayer.velocity.x, pmPlayer.jumpForce);
+                hitsToKill--;
+                hittable = false;
+                rbEnemy.bodyType = RigidbodyType2D.Kinematic;
+                killCollider.enabled = false;
+                StartCoroutine(FreezePlayer());
+            }
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player" && hittable)
+        {
+            levelManager.RespawnPlayer();
+            hittable = false;
+            StartCoroutine(FreezePlayer());
+        }
+    }
+
     IEnumerator FreezePlayer()
     {
         yield return new WaitForSeconds(2f);
         hittable = true;
-        killCollider.enabled = false;
+        killCollider.enabled = true;
+        rbEnemy.bodyType = RigidbodyType2D.Dynamic;
     }
 
     void Flip()
