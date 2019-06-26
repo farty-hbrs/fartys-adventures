@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public Text livesText;
     public Text timeText;
     public float time;
+    public GameObject[] objectsToResetWhenDead;
 
     private int lives;
     private int coins;
@@ -32,12 +33,10 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        lives = PlayerPrefs.GetInt("Lives", 0);
-        lives = lives > 0 ? lives : 5;
+        lives = PlayerPrefs.GetInt("Lives", 5);
         livesText.text = lives.ToString();
 
         coins = PlayerPrefs.GetInt("Coins", 0);
-        coins = coins > 0 ? coins : 0;
         coinsText.text = coins.ToString();
     }
     
@@ -60,11 +59,22 @@ public class LevelManager : MonoBehaviour
         if(lives > 0)
         {
             player.transform.position = currentPos;
+            foreach(GameObject obj in objectsToResetWhenDead)
+            {
+                if(obj != null)
+                {
+                    ResettableGameobject script = obj.GetComponent<ResettableGameobject>();
+                    if(script != null)
+                    {
+                        script.Reset();
+                    }
+                }
+            }
         }
         else
         {
-            coins = 0;
-            PlayerPrefs.SetInt("Coins", coins);
+            //coins = 0;
+            //PlayerPrefs.SetInt("Coins", coins);
             SceneManager.LoadScene("MainMenu");
         }
     }

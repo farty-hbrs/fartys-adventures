@@ -6,10 +6,7 @@ public class SetCameraBounds : MonoBehaviour
 {
     public Transform leftCamBound;
     public Transform rightCamBound;
-    public bool toggle;
     private CameraSuperMario cam;
-    private Transform leftCamBoundBefore;
-    private Transform rightCamBoundBefore;
 
     private void Start()
     {

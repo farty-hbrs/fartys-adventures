@@ -2,11 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallDownWhenPlayerJumpsOn : MonoBehaviour
+public class FallDownWhenPlayerJumpsOn : MonoBehaviour, ResettableGameobject
 {
     public float delay = 0f;
     private bool playerJumpedOn = false;
     private bool fellDown = false;
+
+    private Vector2 startPos;
+    private Rigidbody2D rb;
+
+    void Start()
+    {
+        if (rb == null)
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
+        rb.bodyType = RigidbodyType2D.Static;
+        fellDown = false;
+        playerJumpedOn = false;
+        
+        if(startPos == null)
+        {
+            startPos = new Vector2(transform.position.x, transform.position.y);
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -31,7 +50,16 @@ public class FallDownWhenPlayerJumpsOn : MonoBehaviour
         { 
             yield return new WaitForSeconds(delay);
         }
-        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        rb.bodyType = RigidbodyType2D.Dynamic;
         fellDown = true;
+    }
+
+    public void Reset()
+    {
+        if (fellDown)
+        {
+            transform.position = startPos;
+            Start();
+        }
     }
 }

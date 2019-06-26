@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveObjectOnTrigger : MonoBehaviour
+public class MoveObjectOnTrigger : MonoBehaviour, ResettableGameobject
 {
     public GameObject objectToMove;
     public GameObject destination;
     public float speed = 5;
 
+    private Vector2 startPos;
+
     private bool triggered = false;
+
+    private void Start()
+    {
+        startPos = new Vector2(objectToMove.transform.position.x, objectToMove.transform.position.y);
+    }
 
     void Update()
     {
@@ -24,5 +31,11 @@ public class MoveObjectOnTrigger : MonoBehaviour
         {
             triggered = true;
         }
+    }
+
+    public void Reset()
+    {
+        objectToMove.transform.position = startPos;
+        triggered = false;
     }
 }
