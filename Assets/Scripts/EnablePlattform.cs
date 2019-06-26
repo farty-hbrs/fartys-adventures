@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnablePlattform : MonoBehaviour
 {
-    public GameObject Plattform;
+    public GameObject[] Plattform;
 
 
     private void Start()
@@ -17,8 +17,11 @@ public class EnablePlattform : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Plattform.SetActive(true);
-            
+            for (int i = 0; i < Plattform.Length; i++)
+            {
+                Plattform[i].SetActive(true);
+            }
+
         }
     }
 
@@ -26,9 +29,10 @@ public class EnablePlattform : MonoBehaviour
     
     void deactivate()
     {
-
-        Plattform.SetActive(false);
-
+        for (int i = 0; i < Plattform.Length; i++)
+        {
+            Plattform[i].SetActive(false);
+        }
 
     }
 }
