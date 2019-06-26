@@ -19,6 +19,8 @@ public class EnemyFollow : MonoBehaviour
     protected Rigidbody2D rbEnemy;
     protected PlayerMovement pmPlayer;
 
+    private Animator anim;
+
 
     void Start()
     {
@@ -27,8 +29,10 @@ public class EnemyFollow : MonoBehaviour
         rbEnemy = GetComponent<Rigidbody2D>();
         pmPlayer = target.GetComponent<PlayerMovement>();
         levelManager = FindObjectOfType<LevelManager>();
+        anim = GetComponent<Animator>();
         facingLeft = true;
         hittable = true;
+        anim.SetBool("isMoving", false);
     }
 
     void Update()
@@ -44,9 +48,10 @@ public class EnemyFollow : MonoBehaviour
             Flip();
         }
 
-        if (Mathf.Abs(transform.position.x - target.transform.position.x) >= minDist && hittable)
+        if (speed > 0 && Mathf.Abs(transform.position.x - target.transform.position.x) >= minDist && hittable)
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.transform.position.x, transform.position.y), speed * Time.deltaTime);
+            anim.SetBool("isMoving", true);
             //transform.position += transform.forward * MoveSpeed * Time.deltaTime;
 
 
@@ -56,6 +61,10 @@ public class EnemyFollow : MonoBehaviour
                 // If the enemy can shoot or something like that you can implement it here
             }
 
+        }
+        else
+        {
+            anim.SetBool("isMoving", false);
         }
     }
 
