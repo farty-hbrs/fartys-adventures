@@ -18,8 +18,7 @@ public class EnemyFollow : MonoBehaviour
     protected Rigidbody2D rbPlayer;
     protected Rigidbody2D rbEnemy;
     protected PlayerMovement pmPlayer;
-
-    private Animator anim;
+    protected Animator anim;
 
 
     void Start()
@@ -37,8 +36,6 @@ public class EnemyFollow : MonoBehaviour
 
     void Update()
     {
-        //transform.LookAt(player.transform);
-
         if (transform.position.x > target.transform.position.x && !facingLeft)
         {
             Flip();
@@ -52,7 +49,6 @@ public class EnemyFollow : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.transform.position.x, transform.position.y), speed * Time.deltaTime);
             anim.SetBool("isMoving", true);
-            //transform.position += transform.forward * MoveSpeed * Time.deltaTime;
 
 
 
