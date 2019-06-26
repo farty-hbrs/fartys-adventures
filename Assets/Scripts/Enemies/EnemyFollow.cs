@@ -9,7 +9,7 @@ public class EnemyFollow : MonoBehaviour
     public float maxDist = 1;
     public Collider2D killCollider;
 
-    public float hitsToKill = 1;
+    public int hitsToKill = 1;
     public GameObject target;
 
     protected bool facingLeft;

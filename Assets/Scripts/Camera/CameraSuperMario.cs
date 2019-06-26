@@ -11,6 +11,7 @@ public class CameraSuperMario : MonoBehaviour
     public float offsetX;
     public float offsetY;
     
+    private float deltaX;
     private float deltaY;
     private float cameraX;
     private float cameraY;
@@ -43,6 +44,7 @@ public class CameraSuperMario : MonoBehaviour
 
         playerX = player.transform.position.x;
         playerY = player.transform.position.y;
+        deltaX = Mathf.Abs(playerX - cameraX);
         deltaY = Mathf.Abs(playerY - cameraY);
         startYPlayer = playerY;
         startYCamera = transform.position.y;

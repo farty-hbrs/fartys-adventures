@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SetEnemyFollow : MonoBehaviour
+public class SetEnemyFollow : MonoBehaviour, ResettableGameobject
 {
     public GameObject enemy;
     public bool enableEnemyFollow;
@@ -10,10 +10,21 @@ public class SetEnemyFollow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ef = enemy.GetComponent<EnemyFollow>();
-        if (collision.tag == "Player" && ef != null)
+        if(enemy != null)
         {
-            ef.enabled = enableEnemyFollow;
+            ef = enemy.GetComponent<EnemyFollow>();
+            if (collision.tag == "Player" && ef != null)
+            {
+                ef.enabled = enableEnemyFollow;
+            }
+        }
+    }
+
+    public void Reset()
+    {
+        if (ef != null)
+        {
+            ef.enabled = !enableEnemyFollow;
         }
     }
 }

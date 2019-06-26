@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PigBoss : EnemyFollow
+public class PigBoss : EnemyFollow, ResettableGameobject
 {
     public GameObject leftWall;
     public GameObject rightWall;
@@ -11,16 +11,23 @@ public class PigBoss : EnemyFollow
     public Transform rightCamBound;
     public GameObject pigBody;
 
+    public Transform leftCamBoundBefore;
+    public Transform rightCamBoundBefore;
+
     private bool facingLeft;
     private bool hittable;
     private LevelManager levelManager;
     private Rigidbody2D rbPlayer;
     private Rigidbody2D rbEnemy;
     private PlayerMovement pmPlayer;
+    private CameraSuperMario camScript;
 
+    private Vector2 startPos;
+    private int selectedHitsToKill;
 
     void Start()
     {
+        camScript = FindObjectOfType<CameraSuperMario>();
         target = GameObject.FindWithTag("Player");
         rbPlayer = target.GetComponent<Rigidbody2D>();
         rbEnemy = GetComponent<Rigidbody2D>();
@@ -28,6 +35,8 @@ public class PigBoss : EnemyFollow
         levelManager = FindObjectOfType<LevelManager>();
         facingLeft = true;
         hittable = true;
+        startPos = new Vector2(transform.position.x, transform.position.y);
+        selectedHitsToKill = hitsToKill;
     }
 
     void Update()
@@ -46,9 +55,6 @@ public class PigBoss : EnemyFollow
         if (Mathf.Abs(transform.position.x - target.transform.position.x) >= minDist && hittable)
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.transform.position.x, transform.position.y), speed * Time.deltaTime);
-            //transform.position += transform.forward * MoveSpeed * Time.deltaTime;
-
-
 
             if (Mathf.Abs(transform.position.x - target.transform.position.x) <= maxDist)
             {
@@ -67,9 +73,8 @@ public class PigBoss : EnemyFollow
             pigBody.GetComponent<SpriteRenderer>().color = color;
             if (hitsToKill == 1)
             {
-                CameraSuperMario cam = FindObjectOfType<CameraSuperMario>();
-                cam.SetBounds(leftCamBound, rightCamBound);
-                Destroy(leftWall);
+                camScript.SetBounds(leftCamBound, rightCamBound);
+                //Destroy(leftWall);
                 Destroy(rightWall);
                 Destroy(trigger);
                 Destroy(gameObject);
@@ -91,8 +96,6 @@ public class PigBoss : EnemyFollow
         if (collision.gameObject.tag == "Player" && hittable)
         {
             levelManager.RespawnPlayer();
-            hittable = false;
-            StartCoroutine(FreezePlayer());
         }
     }
 
@@ -113,5 +116,12 @@ public class PigBoss : EnemyFollow
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
+    }
+
+    public void Reset()
+    {
+        camScript.SetBounds(leftCamBoundBefore, rightCamBoundBefore);
+        hitsToKill = selectedHitsToKill;
+        transform.position = startPos;
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowPath : MonoBehaviour
+public class FollowPath : MonoBehaviour, ResettableGameobject
 {
     public enum FollowType
     {
@@ -21,6 +21,8 @@ public class FollowPath : MonoBehaviour
     private GameObject target = null;
     private Vector3 offset;
     private bool playerJumpedOn = false;
+    private bool fellDown = false;
+    private Rigidbody2D rb;
 
     void Start()
     {
@@ -37,12 +39,24 @@ public class FollowPath : MonoBehaviour
             return;
         }
 
+        if (rb == null)
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
+        if(rb != null)
+        {
+            rb.bodyType = RigidbodyType2D.Static;
+        }
+
+        fellDown = false;
+        playerJumpedOn = false;
+        
         transform.position = currentPoint.Current.position;
     }
 
     void Update()
     {
-        if(currentPoint == null || currentPoint.Current == null || (startWhenPlayerJumpsOn && !playerJumpedOn))
+        if(fellDown || currentPoint == null || currentPoint.Current == null || (startWhenPlayerJumpsOn && !playerJumpedOn))
         {
             return;
         }
@@ -61,7 +75,8 @@ public class FollowPath : MonoBehaviour
         {
             if (fallDownAtEnd && currentPoint.Current == path.points[path.points.Length - 1])
             {
-                GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                rb.bodyType = RigidbodyType2D.Dynamic;
+                fellDown = true;
                 return;
             }
             currentPoint.MoveNext();
@@ -90,6 +105,14 @@ public class FollowPath : MonoBehaviour
         if(target != null)
         {
             target.transform.position = transform.position + offset;
+        }
+    }
+
+    public void Reset()
+    {
+        if (startWhenPlayerJumpsOn)
+        {
+            Start();
         }
     }
 }
