@@ -12,12 +12,12 @@ public class EnemyFollow : MonoBehaviour
     public float hitsToKill = 1;
     public GameObject target;
 
-    private bool facingLeft;
-    private bool hittable;
-    private LevelManager levelManager;
-    private Rigidbody2D rbPlayer;
-    private Rigidbody2D rbEnemy;
-    private PlayerMovement pmPlayer;
+    protected bool facingLeft;
+    protected bool hittable;
+    protected LevelManager levelManager;
+    protected Rigidbody2D rbPlayer;
+    protected Rigidbody2D rbEnemy;
+    protected PlayerMovement pmPlayer;
 
 
     void Start()
