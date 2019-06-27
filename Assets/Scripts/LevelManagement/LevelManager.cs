@@ -9,12 +9,12 @@ public class LevelManager : MonoBehaviour
     public Vector3 currentPos;
     public GameObject player;
     public Text coinsText;
-    public Text livesText;
+    public Text deathsText;
     public Text timeText;
     public float time;
     public GameObject[] objectsToResetWhenDead;
 
-    private int lives;
+    private int deaths;
     private int coins;
     private static LevelManager instance;
 
@@ -33,9 +33,9 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        lives = PlayerPrefs.GetInt("Lives", 5);
-        lives = lives > 0 ? lives : 5;
-        livesText.text = lives.ToString();
+        deaths = PlayerPrefs.GetInt("Deaths", 0);
+        deaths = (deaths > 0 && deaths < 999) ? deaths : 0;
+        deathsText.text = deaths.ToString();
 
         coins = PlayerPrefs.GetInt("Coins", 0);
         coins = coins > 0 ? coins : 0;
@@ -54,30 +54,21 @@ public class LevelManager : MonoBehaviour
 
     public void RespawnPlayer()
     {
-        lives--;
-        PlayerPrefs.SetInt("Lives", lives);
-        livesText.text = "" + lives;
+        deaths++;
+        PlayerPrefs.SetInt("Deaths", deaths);
+        deathsText.text = "" + deaths;
         
-        if(lives > 0)
+        player.transform.position = currentPos;
+        foreach(GameObject obj in objectsToResetWhenDead)
         {
-            player.transform.position = currentPos;
-            foreach(GameObject obj in objectsToResetWhenDead)
+            if(obj != null)
             {
-                if(obj != null)
+                ResettableGameobject script = obj.GetComponent<ResettableGameobject>();
+                if(script != null)
                 {
-                    ResettableGameobject script = obj.GetComponent<ResettableGameobject>();
-                    if(script != null)
-                    {
-                        script.Reset();
-                    }
+                    script.Reset();
                 }
             }
-        }
-        else
-        {
-            //coins = 0;
-            //PlayerPrefs.SetInt("Coins", coins);
-            SceneManager.LoadScene("MainMenu");
         }
     }
 
