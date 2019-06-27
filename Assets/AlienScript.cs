@@ -20,11 +20,7 @@ public class AlienScript : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        startPos = target.transform.position;
-        lastPos = startPos;
-        newPos = startPos;
-        newPos.y += 0.25f;
-        target.transform.position = newPos;
+        
     }
 
     void OnTriggerStay2D(Collider2D col)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyFollow : MonoBehaviour
+public class EnemyFollow : MonoBehaviour, ResettableGameobject
 {
     public float speed = 4;
     public float minDist = 10;
@@ -108,5 +108,10 @@ public class EnemyFollow : MonoBehaviour
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
+    }
+
+    public void Reset()
+    {
+        throw new System.NotImplementedException();
     }
 }
