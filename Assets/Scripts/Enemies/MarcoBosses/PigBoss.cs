@@ -102,7 +102,7 @@ public class PigBoss : EnemyFollow, ResettableGameobject
         transform.localScale = scale;
     }
 
-    public void Reset()
+    public new void Reset()
     {
         camScript.SetBounds(leftCamBoundBefore, rightCamBoundBefore);
         hitsToKill = selectedHitsToKill;

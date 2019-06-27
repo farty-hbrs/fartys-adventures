@@ -8,6 +8,8 @@ public class RatBoss : EnemyFollow, ResettableGameobject
     public Sprite killSwitchActiveSprite;
     public Sprite killSwitchInactiveSprite;
     public GameObject rockWrapper;
+    public GameObject trigger;
+    public GameObject rightWall;
 
     private Vector2 startPos;
     private int selectedHitsToKill;
@@ -57,8 +59,10 @@ public class RatBoss : EnemyFollow, ResettableGameobject
         {
             if (hitsToKill == 1)
             {
-                Destroy(gameObject);
                 Destroy(rockWrapper);
+                Destroy(trigger);
+                Destroy(rightWall);
+                Destroy(gameObject);
             }
             if (rbPlayer.velocity.y <= 0)
             {
