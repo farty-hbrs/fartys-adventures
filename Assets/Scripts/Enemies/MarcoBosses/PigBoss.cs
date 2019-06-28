@@ -13,14 +13,9 @@ public class PigBoss : EnemyFollow, ResettableGameobject
 
     public Transform leftCamBoundBefore;
     public Transform rightCamBoundBefore;
-    
-    private CameraSuperMario camScript;
-    private Vector2 startPos;
-    private int selectedHitsToKill;
 
     void Start()
     {
-        camScript = FindObjectOfType<CameraSuperMario>();
         target = GameObject.FindWithTag("Player");
         rbPlayer = target.GetComponent<Rigidbody2D>();
         rbEnemy = GetComponent<Rigidbody2D>();
@@ -65,7 +60,7 @@ public class PigBoss : EnemyFollow, ResettableGameobject
             pigBody.GetComponent<SpriteRenderer>().color = color;
             if (hitsToKill == 1)
             {
-                camScript.SetBounds(leftCamBound, rightCamBound);
+                FindObjectOfType<CameraSuperMario>().SetBounds(leftCamBound, rightCamBound);
                 Destroy(rightWall);
                 Destroy(trigger);
                 Destroy(gameObject);
@@ -111,7 +106,7 @@ public class PigBoss : EnemyFollow, ResettableGameobject
 
     public new void Reset()
     {
-        camScript.SetBounds(leftCamBoundBefore, rightCamBoundBefore);
+        FindObjectOfType<CameraSuperMario>().SetBounds(leftCamBoundBefore, rightCamBoundBefore);
         hitsToKill = selectedHitsToKill;
         transform.position = startPos;
     }

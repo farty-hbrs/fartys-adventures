@@ -19,6 +19,9 @@ public class EnemyFollow : MonoBehaviour, ResettableGameobject
     protected Rigidbody2D rbEnemy;
     protected PlayerMovement pmPlayer;
     protected Animator anim;
+    protected Vector2 startPos;
+    protected int selectedHitsToKill;
+    private bool moved;
 
 
     void Start()
@@ -29,9 +32,12 @@ public class EnemyFollow : MonoBehaviour, ResettableGameobject
         pmPlayer = target.GetComponent<PlayerMovement>();
         levelManager = FindObjectOfType<LevelManager>();
         anim = GetComponent<Animator>();
+        startPos = new Vector2(transform.position.x, transform.position.y);
         facingLeft = true;
         hittable = true;
         anim.SetBool("isMoving", false);
+        selectedHitsToKill = hitsToKill;
+        moved = false;
     }
 
     void Update()
@@ -47,6 +53,7 @@ public class EnemyFollow : MonoBehaviour, ResettableGameobject
 
         if (speed > 0 && Mathf.Abs(transform.position.x - target.transform.position.x) >= minDist && hittable)
         {
+            moved = true;
             if (rbEnemy != null)
             {
                 rbEnemy.velocity = new Vector2(speed * (facingLeft ? -1 : 1), rbEnemy.velocity.y);
@@ -75,10 +82,6 @@ public class EnemyFollow : MonoBehaviour, ResettableGameobject
     {
         if (collision.gameObject.tag == "Player" && hittable)
         {
-            if (hitsToKill == 1)
-            {
-                Destroy(gameObject);
-            }
             if (rbPlayer.velocity.y <= 0)
             {
                 rbPlayer.velocity = new Vector2(rbPlayer.velocity.x, pmPlayer.jumpForce);
@@ -87,6 +90,10 @@ public class EnemyFollow : MonoBehaviour, ResettableGameobject
                 rbEnemy.bodyType = RigidbodyType2D.Kinematic;
                 killCollider.enabled = false;
                 StartCoroutine(FreezePlayer());
+            }
+            if (hitsToKill == 0)
+            {
+                gameObject.SetActive(false);
             }
         }
     }
@@ -119,6 +126,17 @@ public class EnemyFollow : MonoBehaviour, ResettableGameobject
 
     public void Reset()
     {
-        throw new System.NotImplementedException();
+        if (moved)
+        {
+            transform.position = startPos;
+            gameObject.SetActive(true);
+            hittable = true;
+            if (rbEnemy != null)
+            {
+                rbEnemy.bodyType = RigidbodyType2D.Dynamic;
+            }
+            killCollider.enabled = true;
+            hitsToKill = selectedHitsToKill;
+        }
     }
 }

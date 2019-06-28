@@ -10,10 +10,10 @@ public class RatBoss : EnemyFollow, ResettableGameobject
     public GameObject rockWrapper;
     public GameObject trigger;
     public GameObject rightWall;
-
-    private Vector2 startPos;
-    private int selectedHitsToKill;
+    public GameObject[] rats;
+    public GameObject[] ratTriggers;
     private bool touchedSwitch;
+    private int currentRat;
 
     void Start()
     {
@@ -29,6 +29,7 @@ public class RatBoss : EnemyFollow, ResettableGameobject
         anim.SetBool("isMoving", false);
         startPos = new Vector2(transform.position.x, transform.position.y);
         selectedHitsToKill = hitsToKill;
+        currentRat = 0;
     }
 
     void Update()
@@ -93,6 +94,15 @@ public class RatBoss : EnemyFollow, ResettableGameobject
                 }
             }
         }
+        if (currentRat < rats.Length)
+        {
+            if (collision.gameObject == ratTriggers[currentRat])
+            {
+                ratTriggers[currentRat].SetActive(false);
+                rats[currentRat].SetActive(true);
+                currentRat++;
+            }
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -121,7 +131,7 @@ public class RatBoss : EnemyFollow, ResettableGameobject
         transform.localScale = scale;
     }
 
-    public void Reset()
+    public new void Reset()
     {
         foreach (Transform child in rockWrapper.transform)
         {
@@ -130,9 +140,18 @@ public class RatBoss : EnemyFollow, ResettableGameobject
                 child.gameObject.GetComponent<KillSwitchRock>().Reset();
             }
         }
+        foreach(GameObject obj in rats)
+        {
+            obj.SetActive(false);
+        }
+        foreach(GameObject obj in ratTriggers)
+        {
+            obj.SetActive(true);
+        }
         killSwitch.GetComponent<SpriteRenderer>().sprite = killSwitchInactiveSprite;
         hitsToKill = selectedHitsToKill;
         transform.position = startPos;
         touchedSwitch = false;
+        currentRat = 0;
     }
 }

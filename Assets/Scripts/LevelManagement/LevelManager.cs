@@ -64,7 +64,7 @@ public class LevelManager : MonoBehaviour
             if(obj != null)
             {
                 ResettableGameobject script = obj.GetComponent<ResettableGameobject>();
-                if(script != null)
+                if (script != null)
                 {
                     script.Reset();
                 }

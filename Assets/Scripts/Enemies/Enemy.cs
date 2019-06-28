@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, ResettableGameobject
 {
     public float speed = 0;
     public float distance = 6;
@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && hittable)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
@@ -81,5 +81,12 @@ public class Enemy : MonoBehaviour
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
+    }
+
+    public void Reset()
+    {
+        transform.position = startPos;
+        gameObject.SetActive(true);
+        hittable = true;
     }
 }
