@@ -44,7 +44,14 @@ public class RatBoss : EnemyFollow, ResettableGameobject
 
         if (!touchedSwitch && speed > 0 && Mathf.Abs(transform.position.x - target.transform.position.x) >= minDist && hittable)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.transform.position.x, transform.position.y), speed * Time.deltaTime);
+            if (rbEnemy != null)
+            {
+                rbEnemy.velocity = new Vector2(speed * (facingLeft ? -1 : 1), rbEnemy.velocity.y);
+            }
+            else
+            {
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.transform.position.x, transform.position.y), speed * Time.deltaTime);
+            }
             anim.SetBool("isMoving", true);
         }
         else
