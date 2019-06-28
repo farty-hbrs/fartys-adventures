@@ -5,8 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float speed = 0;
-    private float a = 0;
-    private bool flip = false;
+    public float distance = 6;
 
     private Vector3 startPos;
     private Vector3 newPos;
@@ -14,6 +13,7 @@ public class Enemy : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool hittable;
     private LevelManager levelManager;
+    private bool facingLeft;
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +23,9 @@ public class Enemy : MonoBehaviour
         startPos = transform.position;
         lastPos = startPos;
         hittable = true;
-        
-        if(speed < 0)
+        facingLeft = true;
+
+        if (speed < 0)
         {
             speed = Random.Range(3f, 10f);
         }
@@ -35,27 +36,16 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         newPos = startPos;
-        newPos.x += Mathf.PingPong(Time.time * speed, 6) - 3;
-        a = Mathf.PingPong(Time.time * speed, 6) - 3;
+        newPos.x += Mathf.PingPong(Time.time * speed, distance) - distance / 2;
         transform.position = newPos;
-        /*if(newPos.x > lastPos.x)
-        {
-            Flip();
-        }
-        else
-        {
-            Flip();
-        }*/
-        
-        if(a > 2.95 || a < -2.95)
-        {
-            flip = true;
-        }
 
-        if (flip)
+        if (newPos.x > lastPos.x && facingLeft)
         {
             Flip();
-            flip = false;
+        }
+        if (newPos.x < lastPos.x && !facingLeft)
+        {
+            Flip();
         }
 
         lastPos = newPos;
@@ -87,6 +77,7 @@ public class Enemy : MonoBehaviour
 
     void Flip()
     {
+        facingLeft = !facingLeft;
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
