@@ -10,6 +10,10 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 3;
     public Transform feetPosTopLeft;
     public Transform feetPosBottomRight;
+    public Transform HeadPosTopLeft;
+    public Transform HeadPosBottomRight;
+    public Transform FartPos;
+    public GameObject fartCloud;
     public LayerMask whatIsGround;
     public GameObject levelEnd;
     public GameObject nextLevelTrigger;
@@ -23,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     private bool pressedJump;
     private bool moveX;
     private bool reachedLevelEnd;
+
+    private AudioManager am;
     
 
     // Start is called before the first frame update
@@ -30,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        am = FindObjectOfType<AudioManager>();
         pressedJump = false;
         isJumping = false;
         moveX = true;
@@ -53,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
         {
             moveInput = CrossPlatformInputManager.GetAxis("Horizontal");
         }
+
         anim.SetFloat("speed", Mathf.Abs(moveInput));
         isGrounded = Physics2D.OverlapArea(feetPosTopLeft.position, feetPosBottomRight.position, whatIsGround);
         anim.SetBool("isGrounded", isGrounded);
@@ -62,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(speed * moveInput, rb.velocity.y);
         }
 
-        // Side movement
+        // Side movement sprite flipping
         if (moveInput > 0)
         {
             transform.eulerAngles = Vector3.zero;
@@ -91,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
         if(CrossPlatformInputManager.GetButtonDown("Jump") && isGrounded && !isJumping)
         {
             pressedJump = true;
+            StartCoroutine(Fart());
         }
     }
 
@@ -111,6 +120,22 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         moveX = true;
+
+    }
+
+    IEnumerator Fart()
+    {
+        // Instantiate fart object with random rotation
+        GameObject fart = Instantiate(fartCloud, FartPos.position, FartPos.rotation);
+        Vector3 euler = fart.transform.eulerAngles;
+        euler.z = Random.Range(0f, 360f);
+        fart.transform.eulerAngles = euler;
+
+        // Play random fart sound
+        string soundName = "fart" + Random.Range(1, 1);
+        am.Play("fart1");
+        yield return new WaitForSeconds(1f);
+        Destroy(fart);
 
     }
 
