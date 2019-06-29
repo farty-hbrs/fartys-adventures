@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 178652386397347552}
   - component: {fileID: 8610477570930890339}
   - component: {fileID: 6720382409995189061}
-  - component: {fileID: 585738426796081845}
   m_Layer: 0
   m_Name: RollingStone
   m_TagString: Untagged
@@ -150,40 +149,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!68 &585738426796081845
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 178652386397347359}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 4.66333, y: -3.5450897}
-  - {x: 5.147278, y: -2.3433914}
-  - {x: 4.6693115, y: 0.71739197}
-  - {x: 3.6132202, y: 2.6414948}
-  - {x: 1.227356, y: 4.731476}
-  - {x: 0.029174805, y: 5.005951}
-  - {x: -1.4585571, y: 3.7146606}
-  - {x: -2.9193115, y: 4.21537}
-  - {x: -4.081543, y: 4.124565}
-  - {x: -4.6815796, y: 3.4006042}
-  - {x: -5.0499268, y: 1.974968}
-  - {x: -5.065918, y: -1.0044479}
-  - {x: -4.6326294, y: -2.3122482}
-  - {x: -3.553772, y: -3.9247742}
-  - {x: -1.802124, y: -4.203308}
-  - {x: -0.350708, y: -5.0509644}
-  - {x: 2.4301147, y: -4.7257156}
-  - {x: 3.5029297, y: -3.4926224}
-  - {x: 3.7244263, y: -3.453598}
-  - {x: 4.3843384, y: -3.5831757}
-  - {x: 4.6464233, y: -3.5391235}
