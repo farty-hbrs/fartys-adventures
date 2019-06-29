@@ -5,6 +5,14 @@ using UnityEngine;
 public class DelayedSelfDestruction : MonoBehaviour
 {
     public float Delay;
+    private Vector2 startPos;
+
+
+    private void Start()
+    {
+       startPos = new Vector2(transform.position.x, transform.position.y);
+    }
+
 
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D collision)
@@ -14,6 +22,17 @@ public class DelayedSelfDestruction : MonoBehaviour
 
     void SelfDestroy()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+    }
+
+
+    public void Reset()
+    {
+
+        if (!gameObject.activeSelf)
+        {
+            transform.position = startPos;
+            gameObject.SetActive(true);
+        }
     }
 }
