@@ -8875,16 +8875,6 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -46
-      objectReference: {fileID: 0}
-    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6727672053163571943, guid: e7b0533d21c658648b8121e8046b3d7f,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -8939,6 +8929,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -46
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5069565060676640500, guid: e7b0533d21c658648b8121e8046b3d7f,
         type: 3}
@@ -9059,9 +9059,10 @@ MonoBehaviour:
   currentPos: {x: 0, y: 0, z: 0}
   player: {fileID: 699405574}
   coinsText: {fileID: 1319112701}
-  livesText: {fileID: 955942829}
+  deathsText: {fileID: 0}
   timeText: {fileID: 1304577811}
   time: 100
+  objectsToResetWhenDead: []
 --- !u!4 &268436892
 Transform:
   m_ObjectHideFlags: 0
@@ -15005,16 +15006,6 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -47
-      objectReference: {fileID: 0}
-    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6727672053163571943, guid: e7b0533d21c658648b8121e8046b3d7f,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -15069,6 +15060,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -47
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5069565060676640500, guid: e7b0533d21c658648b8121e8046b3d7f,
         type: 3}
@@ -15679,6 +15680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  distance: 6
 --- !u!212 &452819047
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15895,6 +15897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  distance: 6
 --- !u!212 &466236693
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16362,16 +16365,6 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -46
-      objectReference: {fileID: 0}
-    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6727672053163571943, guid: e7b0533d21c658648b8121e8046b3d7f,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -16426,6 +16419,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -46
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5069565060676640500, guid: e7b0533d21c658648b8121e8046b3d7f,
         type: 3}
@@ -21174,16 +21177,6 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -46
-      objectReference: {fileID: 0}
-    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6727672053163571943, guid: e7b0533d21c658648b8121e8046b3d7f,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -21238,6 +21231,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -46
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5069565060676640500, guid: e7b0533d21c658648b8121e8046b3d7f,
         type: 3}
@@ -25099,7 +25102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b44df6b7bf61d04abfb88c1122081a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: scene01
+  sceneToLoad: Marco
 --- !u!61 &745352091
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26353,6 +26356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  distance: 6
 --- !u!212 &786331439
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32380,6 +32384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  distance: 6
 --- !u!1 &969437894
 GameObject:
   m_ObjectHideFlags: 0
@@ -37371,6 +37376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  distance: 6
 --- !u!212 &1111965341
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -39579,6 +39585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  distance: 6
 --- !u!212 &1174096465
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -51665,16 +51672,6 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -50.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6727672053163571943, guid: e7b0533d21c658648b8121e8046b3d7f,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -51729,6 +51726,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -50.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5069565060676640500, guid: e7b0533d21c658648b8121e8046b3d7f,
         type: 3}
@@ -52450,16 +52457,6 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -46
-      objectReference: {fileID: 0}
-    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6727672053163571943, guid: e7b0533d21c658648b8121e8046b3d7f,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -52514,6 +52511,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -46
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5069565060676640500, guid: e7b0533d21c658648b8121e8046b3d7f,
         type: 3}
@@ -56486,6 +56493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  distance: 6
 --- !u!212 &1706938713
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -57265,6 +57273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  distance: 6
 --- !u!212 &1727120892
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -58595,6 +58604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  distance: 6
 --- !u!212 &1768890517
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -59078,16 +59088,6 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -46
-      objectReference: {fileID: 0}
-    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6727672053163571943, guid: e7b0533d21c658648b8121e8046b3d7f,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -59142,6 +59142,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -46
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5069565060676640500, guid: e7b0533d21c658648b8121e8046b3d7f,
         type: 3}
@@ -59328,6 +59338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  distance: 6
 --- !u!212 &1779075376
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -65431,6 +65442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  distance: 6
 --- !u!212 &1947737245
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -69512,16 +69524,6 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -46
-      objectReference: {fileID: 0}
-    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6727672053163571943, guid: e7b0533d21c658648b8121e8046b3d7f,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -69576,6 +69578,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -46
+      objectReference: {fileID: 0}
+    - target: {fileID: 8374090396098539320, guid: e7b0533d21c658648b8121e8046b3d7f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5069565060676640500, guid: e7b0533d21c658648b8121e8046b3d7f,
         type: 3}
