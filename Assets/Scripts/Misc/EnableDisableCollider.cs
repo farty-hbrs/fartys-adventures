@@ -21,7 +21,7 @@ public class EnableDisableCollider : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Invoke("reactivate", 0.3f);
+            Invoke("reactivate", 1f);
         }
     }
 
