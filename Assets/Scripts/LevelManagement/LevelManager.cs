@@ -64,7 +64,6 @@ public class LevelManager : MonoBehaviour
         player.transform.position = currentPos;
         foreach(GameObject obj in objectsToResetWhenDead)
         {
-            obj.SetActive(true);
             if(obj != null)
             {
                 ResettableGameobject script = obj.GetComponent<ResettableGameobject>();

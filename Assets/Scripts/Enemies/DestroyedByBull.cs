@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyedByBull : MonoBehaviour
+public class DestroyedByBull : MonoBehaviour, ResettableGameobject
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -10,6 +10,11 @@ public class DestroyedByBull : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+    }
+
+    public void Reset()
+    {
+        gameObject.SetActive(true);
     }
 
 }
