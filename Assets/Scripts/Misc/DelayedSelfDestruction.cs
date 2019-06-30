@@ -18,6 +18,7 @@ public class DelayedSelfDestruction : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Invoke("SelfDestroy", Delay);
+        Invoke("Rearrange", 3);
     }
 
     void SelfDestroy()
@@ -26,13 +27,12 @@ public class DelayedSelfDestruction : MonoBehaviour
     }
 
 
-    public void Reset()
+    void Rearrange()
     {
 
-        if (!gameObject.activeSelf)
-        {
+        
             transform.position = startPos;
             gameObject.SetActive(true);
-        }
+        
     }
 }
