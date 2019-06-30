@@ -5,7 +5,6 @@ using UnityEngine;
 public class FallDownWhenPlayerJumpsOn : MonoBehaviour, ResettableGameobject
 {
     public float delay = 0f;
-    private bool playerJumpedOn;
     private bool fellDown;
 
     private Vector2 startPos;
@@ -19,28 +18,14 @@ public class FallDownWhenPlayerJumpsOn : MonoBehaviour, ResettableGameobject
         }
         rb.bodyType = RigidbodyType2D.Static;
         fellDown = false;
-        playerJumpedOn = false;
-        
-        if(startPos == null)
-        {
-            startPos = new Vector2(transform.position.x, transform.position.y);
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (playerJumpedOn && !fellDown)
-        {
-            StartCoroutine(Delay());
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            playerJumpedOn = true;
+            startPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            StartCoroutine(Delay());
         }
     }
 
@@ -58,10 +43,8 @@ public class FallDownWhenPlayerJumpsOn : MonoBehaviour, ResettableGameobject
     {
         if (fellDown)
         {
-            transform.position = startPos;
             rb.bodyType = RigidbodyType2D.Static;
             fellDown = false;
-            playerJumpedOn = false;
             transform.position = startPos;
         }
     }
