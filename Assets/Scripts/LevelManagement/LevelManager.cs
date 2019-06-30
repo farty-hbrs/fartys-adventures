@@ -45,8 +45,11 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         time -= Time.deltaTime;
-        timeText.text = ((int)time).ToString();
-        if(time <= 0f)
+        if (timeText)
+        {
+            timeText.text = ((int)time).ToString();
+        }
+        if (time <= 0f)
         {
             RespawnPlayer();
         }
