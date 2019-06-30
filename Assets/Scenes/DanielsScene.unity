@@ -847,7 +847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e6329dd02e3cf4ab3e3d29ede832d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: daniel-4
+  coinName: daniel-4
 --- !u!1 &110879481
 GameObject:
   m_ObjectHideFlags: 0
@@ -14219,7 +14219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e6329dd02e3cf4ab3e3d29ede832d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: daniel-3
+  coinName: daniel-3
 --- !u!1 &1043384699
 GameObject:
   m_ObjectHideFlags: 0
@@ -15942,7 +15942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e6329dd02e3cf4ab3e3d29ede832d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: daniel-6
+  coinName: daniel-6
 --- !u!4 &1150122284 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4107703208405268947, guid: 2cec57ad63d014941b8bae0669e010ce,
@@ -19423,7 +19423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e6329dd02e3cf4ab3e3d29ede832d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: daniel-5
+  coinName: daniel-5
 --- !u!1001 &1386764523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22787,7 +22787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e6329dd02e3cf4ab3e3d29ede832d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: daniel-1
+  coinName: daniel-1
 --- !u!1 &1658005580
 GameObject:
   m_ObjectHideFlags: 0
@@ -26559,7 +26559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e6329dd02e3cf4ab3e3d29ede832d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: daniel-2
+  coinName: daniel-2
 --- !u!1 &2080920718
 GameObject:
   m_ObjectHideFlags: 0
