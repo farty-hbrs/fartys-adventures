@@ -10,6 +10,12 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool gameIsPaused;
     public GameObject pauseMenu;
+    public Text levelNameText;
+
+    private void Start()
+    {
+        levelNameText.text = SceneManager.GetActiveScene().name + "'s level";
+    }
 
     // Update is called once per frame
     void Update()
