@@ -11,6 +11,7 @@ public class LoadScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /* Disable for open games day
         if (this.GetComponent<Button>() != null)
         {
             // Activate first level (new game)
@@ -26,6 +27,7 @@ public class LoadScene : MonoBehaviour
                 this.GetComponent<Button>().interactable = false;
             }
         }
+        */
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -39,6 +41,8 @@ public class LoadScene : MonoBehaviour
 
     public void LoadLevel()
     {
-        SceneManager.LoadScene(sceneToLoad);
+        //For open games day
+        SceneManager.LoadScene("MainMenu");
+        //SceneManager.LoadScene(sceneToLoad);
     }
 }
