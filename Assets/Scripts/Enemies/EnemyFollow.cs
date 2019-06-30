@@ -21,7 +21,8 @@ public class EnemyFollow : MonoBehaviour, ResettableGameobject
     protected Animator anim;
     protected Vector2 startPos;
     protected int selectedHitsToKill;
-    private bool moved;
+    protected bool moved;
+    protected bool deleted;
 
 
     void Start()
@@ -38,6 +39,7 @@ public class EnemyFollow : MonoBehaviour, ResettableGameobject
         anim.SetBool("isMoving", false);
         selectedHitsToKill = hitsToKill;
         moved = false;
+        deleted = false;
     }
 
     void Update()
@@ -94,6 +96,7 @@ public class EnemyFollow : MonoBehaviour, ResettableGameobject
             if (hitsToKill == 0)
             {
                 gameObject.SetActive(false);
+                deleted = true;
             }
         }
     }
@@ -103,8 +106,8 @@ public class EnemyFollow : MonoBehaviour, ResettableGameobject
         if (collision.gameObject.tag == "Player" && hittable)
         {
             levelManager.RespawnPlayer();
-            hittable = false;
-            StartCoroutine(FreezePlayer());
+            //hittable = false;
+            //StartCoroutine(FreezePlayer());
         }
     }
 
@@ -126,7 +129,7 @@ public class EnemyFollow : MonoBehaviour, ResettableGameobject
 
     public void Reset()
     {
-        if (moved)
+        if (moved || deleted)
         {
             transform.position = startPos;
             gameObject.SetActive(true);
@@ -137,6 +140,8 @@ public class EnemyFollow : MonoBehaviour, ResettableGameobject
             }
             killCollider.enabled = true;
             hitsToKill = selectedHitsToKill;
+            moved = false;
+            deleted = false;
         }
     }
 }

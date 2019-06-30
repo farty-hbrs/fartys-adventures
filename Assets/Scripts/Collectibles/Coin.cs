@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    public string name;
+    public string coinName;
     private LevelManager levelManager;
 
     void Start()
     {
-        name = "coin-" + name;
+        name = "coin-" + coinName;
         if(PlayerPrefs.GetInt(name) == 1)
         {
             Destroy(gameObject);

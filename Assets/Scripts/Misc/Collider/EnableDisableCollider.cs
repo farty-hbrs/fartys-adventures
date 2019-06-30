@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnableDisableCollider : MonoBehaviour
 {
     // Start is called before the first frame update
-    public BoxCollider2D collider;
+    public new BoxCollider2D collider;
 
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)

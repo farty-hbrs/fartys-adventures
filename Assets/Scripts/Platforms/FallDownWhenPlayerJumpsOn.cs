@@ -5,8 +5,8 @@ using UnityEngine;
 public class FallDownWhenPlayerJumpsOn : MonoBehaviour, ResettableGameobject
 {
     public float delay = 0f;
-    private bool playerJumpedOn = false;
-    private bool fellDown = false;
+    private bool playerJumpedOn;
+    private bool fellDown;
 
     private Vector2 startPos;
     private Rigidbody2D rb;
@@ -59,7 +59,10 @@ public class FallDownWhenPlayerJumpsOn : MonoBehaviour, ResettableGameobject
         if (fellDown)
         {
             transform.position = startPos;
-            Start();
+            rb.bodyType = RigidbodyType2D.Static;
+            fellDown = false;
+            playerJumpedOn = false;
+            transform.position = startPos;
         }
     }
 }

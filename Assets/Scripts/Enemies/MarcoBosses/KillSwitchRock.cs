@@ -13,7 +13,7 @@ public class KillSwitchRock : MonoBehaviour, ResettableGameobject
 
     public void Reset()
     {
-        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         transform.position = startPos;
     }
 }

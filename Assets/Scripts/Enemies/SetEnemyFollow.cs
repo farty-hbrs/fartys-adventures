@@ -7,6 +7,7 @@ public class SetEnemyFollow : MonoBehaviour, ResettableGameobject
     public GameObject enemy;
     public bool enableEnemyFollow;
     private EnemyFollow ef;
+    private bool switched = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,15 +17,17 @@ public class SetEnemyFollow : MonoBehaviour, ResettableGameobject
             if (collision.tag == "Player" && ef != null)
             {
                 ef.enabled = enableEnemyFollow;
+                switched = true;
             }
         }
     }
 
     public void Reset()
     {
-        if (ef != null)
+        if (switched && ef != null)
         {
             ef.enabled = !enableEnemyFollow;
+            switched = false;
         }
     }
 }

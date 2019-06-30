@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RatBoss : EnemyFollow, ResettableGameobject
 {
+    public GameObject player;
     public GameObject killSwitch;
     public Sprite killSwitchActiveSprite;
     public Sprite killSwitchInactiveSprite;
@@ -18,9 +19,9 @@ public class RatBoss : EnemyFollow, ResettableGameobject
     void Start()
     {
         target = killSwitch;
-        rbPlayer = target.GetComponent<Rigidbody2D>();
+        rbPlayer = player.GetComponent<Rigidbody2D>();
         rbEnemy = GetComponent<Rigidbody2D>();
-        pmPlayer = target.GetComponent<PlayerMovement>();
+        pmPlayer = player.GetComponent<PlayerMovement>();
         levelManager = FindObjectOfType<LevelManager>();
         anim = GetComponent<Animator>();
         facingLeft = true;
@@ -30,6 +31,8 @@ public class RatBoss : EnemyFollow, ResettableGameobject
         startPos = new Vector2(transform.position.x, transform.position.y);
         selectedHitsToKill = hitsToKill;
         currentRat = 0;
+        moved = false;
+        deleted = false;
     }
 
     void Update()
@@ -45,6 +48,7 @@ public class RatBoss : EnemyFollow, ResettableGameobject
 
         if (!touchedSwitch && speed > 0 && Mathf.Abs(transform.position.x - target.transform.position.x) >= minDist && hittable)
         {
+            moved = true;
             if (rbEnemy != null)
             {
                 rbEnemy.velocity = new Vector2(speed * (facingLeft ? -1 : 1), rbEnemy.velocity.y);
@@ -79,7 +83,6 @@ public class RatBoss : EnemyFollow, ResettableGameobject
                 hittable = false;
                 rbEnemy.bodyType = RigidbodyType2D.Kinematic;
                 killCollider.enabled = false;
-                StartCoroutine(FreezePlayer());
             }
         }
         if (collision.gameObject == killSwitch)
@@ -111,16 +114,8 @@ public class RatBoss : EnemyFollow, ResettableGameobject
         {
             levelManager.RespawnPlayer();
             hittable = false;
-            StartCoroutine(FreezePlayer());
+            deleted = true;
         }
-    }
-
-    IEnumerator FreezePlayer()
-    {
-        yield return new WaitForSeconds(2f);
-        hittable = true;
-        killCollider.enabled = true;
-        rbEnemy.bodyType = RigidbodyType2D.Dynamic;
     }
 
     void Flip()
@@ -133,25 +128,31 @@ public class RatBoss : EnemyFollow, ResettableGameobject
 
     public new void Reset()
     {
-        foreach (Transform child in rockWrapper.transform)
+        if (moved || deleted)
         {
-            if (child != rockWrapper.transform.GetChild(0))
+            foreach (Transform child in rockWrapper.transform)
             {
-                child.gameObject.GetComponent<KillSwitchRock>().Reset();
+                if (child != rockWrapper.transform.GetChild(0))
+                {
+                    child.gameObject.GetComponent<KillSwitchRock>().Reset();
+                }
             }
+            foreach (GameObject obj in rats)
+            {
+                obj.GetComponent<EnemyFollow>().Reset();
+                obj.SetActive(false);
+            }
+            foreach (GameObject obj in ratTriggers)
+            {
+                obj.SetActive(true);
+            }
+            killSwitch.GetComponent<SpriteRenderer>().sprite = killSwitchInactiveSprite;
+            hitsToKill = selectedHitsToKill;
+            transform.position = startPos;
+            touchedSwitch = false;
+            currentRat = 0;
+            moved = false;
+            deleted = false;
         }
-        foreach(GameObject obj in rats)
-        {
-            obj.SetActive(false);
-        }
-        foreach(GameObject obj in ratTriggers)
-        {
-            obj.SetActive(true);
-        }
-        killSwitch.GetComponent<SpriteRenderer>().sprite = killSwitchInactiveSprite;
-        hitsToKill = selectedHitsToKill;
-        transform.position = startPos;
-        touchedSwitch = false;
-        currentRat = 0;
     }
 }

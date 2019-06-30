@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraSuperMario : MonoBehaviour
+public class CameraSuperMario : MonoBehaviour, ResettableGameobject
 {
     public GameObject player;
     public Transform leftCamBound;
@@ -159,5 +159,12 @@ public class CameraSuperMario : MonoBehaviour
             crossedRightBound = false;
             moveX = true;
         }
+    }
+
+    public void Reset()
+    {
+        playerY = player.transform.position.y;
+        cameraY = playerY + deltaY;
+        transform.position = new Vector3(cameraX, cameraY, cameraZ);
     }
 }

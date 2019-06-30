@@ -25,6 +25,7 @@ public class PigBoss : EnemyFollow, ResettableGameobject
         hittable = true;
         startPos = new Vector2(transform.position.x, transform.position.y);
         selectedHitsToKill = hitsToKill;
+        moved = false;
     }
 
     void Update()
@@ -40,6 +41,7 @@ public class PigBoss : EnemyFollow, ResettableGameobject
 
         if (Mathf.Abs(transform.position.x - target.transform.position.x) >= minDist && hittable)
         {
+            moved = true;
             if (rbEnemy != null)
             {
                 rbEnemy.velocity = new Vector2(speed * (facingLeft ? -1 : 1), rbEnemy.velocity.y);
@@ -106,8 +108,12 @@ public class PigBoss : EnemyFollow, ResettableGameobject
 
     public new void Reset()
     {
-        FindObjectOfType<CameraSuperMario>().SetBounds(leftCamBoundBefore, rightCamBoundBefore);
-        hitsToKill = selectedHitsToKill;
-        transform.position = startPos;
+        if (moved)
+        {
+            FindObjectOfType<CameraSuperMario>().SetBounds(leftCamBoundBefore, rightCamBoundBefore);
+            hitsToKill = selectedHitsToKill;
+            transform.position = startPos;
+            moved = false;
+        }
     }
 }
