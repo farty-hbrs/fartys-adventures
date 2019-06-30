@@ -8,7 +8,7 @@ public class DestroyedByBull : MonoBehaviour
     {
         if(collision.gameObject.tag == "Bull")
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
