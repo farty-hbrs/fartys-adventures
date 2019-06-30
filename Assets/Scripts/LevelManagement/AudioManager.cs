@@ -16,13 +16,13 @@ public class AudioManager : MonoBehaviour
         if(instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(instance);
         }
         else
         {
             Destroy(gameObject);
         }
-        // Maybe we will activate this later to dont let the music stop when switching between scenes
-        // DontDestroyOnLoad(gameObject);
+
         foreach(Sound sound in sounds)
         {
             sound.source = gameObject.AddComponent<AudioSource>();
