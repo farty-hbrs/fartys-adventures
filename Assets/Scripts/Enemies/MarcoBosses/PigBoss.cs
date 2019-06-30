@@ -62,7 +62,7 @@ public class PigBoss : EnemyFollow, ResettableGameobject
             pigBody.GetComponent<SpriteRenderer>().color = color;
             if (hitsToKill == 1)
             {
-                FindObjectOfType<CameraSuperMario>().SetBounds(leftCamBound, rightCamBound);
+                FindObjectOfType<CameraSuperMario>().SetBounds(leftCamBoundBefore, rightCamBound);
                 Destroy(rightWall);
                 Destroy(trigger);
                 Destroy(gameObject);

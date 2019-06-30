@@ -9,18 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 49ca52a009923794589f5291928db430
   - enabled: 1
-    path: Assets/Scenes/Hayascene.unity
+    path: Assets/Scenes/Haya.unity
     guid: ebe56642c4adb6d42a0ac140a61cacfb
   - enabled: 1
     path: Assets/Scenes/Marco.unity
     guid: fde1bb316312c5649b0fb1bde15db457
   - enabled: 1
-    path: Assets/Scenes/Abdiscene01.unity
+    path: Assets/Scenes/Abdi.unity
     guid: 4e61545cce4555244ac43e5e0e1ebd4e
   - enabled: 1
-    path: Assets/Scenes/DanielsScene.unity
+    path: Assets/Scenes/Daniel.unity
     guid: 3fa0f8508872f6b46a15dac6a65a5703
   - enabled: 1
-    path: Assets/Scenes/AxelScene.unity
+    path: Assets/Scenes/Axel.unity
     guid: a75d0b8a54d804f48b287247d6675e4c
   m_configObjects: {}
