@@ -30,6 +30,7 @@ public class CameraSuperMario : MonoBehaviour, ResettableGameobject
     private float playerXBeforeCrossingRightBound;
     private Camera cam;
     private bool toggleMoveX;
+    private bool resetted;
 
     private void Start()
     {
@@ -49,6 +50,7 @@ public class CameraSuperMario : MonoBehaviour, ResettableGameobject
         startYPlayer = playerY;
         startYCamera = transform.position.y;
 
+        resetted = false;
         moveX = true;
         toggleMoveX = true;
         movingLeft = false;
@@ -96,9 +98,10 @@ public class CameraSuperMario : MonoBehaviour, ResettableGameobject
                 cameraY = playerY - (deltaY / 3);
             }
         }
-        else
+        if(!marioStyleY || resetted)
         {
             cameraY = playerY + deltaY;
+            resetted = false;
         }
 
         cameraY += offsetY;
@@ -163,8 +166,6 @@ public class CameraSuperMario : MonoBehaviour, ResettableGameobject
 
     public void Reset()
     {
-        playerY = player.transform.position.y;
-        cameraY = playerY + deltaY;
-        transform.position = new Vector3(cameraX, cameraY, cameraZ);
+        resetted = true;
     }
 }
