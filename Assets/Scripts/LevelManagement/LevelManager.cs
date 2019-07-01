@@ -51,7 +51,7 @@ public class LevelManager : MonoBehaviour
         }
         if (time <= 0f)
         {
-            RespawnPlayer();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
