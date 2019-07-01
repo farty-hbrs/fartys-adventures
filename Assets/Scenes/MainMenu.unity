@@ -1079,6 +1079,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 2cebbfdb443e52747b566b2c069e4083, type: 2}
+  fartSlider: {fileID: 0}
+  volSlider: {fileID: 0}
 --- !u!114 &303704315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2325,6 +2327,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 2cebbfdb443e52747b566b2c069e4083, type: 2}
+  fartSlider: {fileID: 1773130445}
+  volSlider: {fileID: 763964646}
 --- !u!1 &696251681
 GameObject:
   m_ObjectHideFlags: 0
