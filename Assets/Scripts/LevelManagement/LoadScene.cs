@@ -42,7 +42,14 @@ public class LoadScene : MonoBehaviour
     public void LoadLevel()
     {
         //For open games day
-        SceneManager.LoadScene("MainMenu");
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            SceneManager.LoadScene(sceneToLoad);
+        }
+        else
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
         //SceneManager.LoadScene(sceneToLoad);
     }
 }

@@ -13,7 +13,9 @@ public class SettingsMenu : MonoBehaviour
     private void Start()
     {
         musicVol = PlayerPrefs.GetFloat("musicVol", 0);
+        audioMixer.SetFloat("musicVol", musicVol);
         fartVol = PlayerPrefs.GetFloat("fartVol", 0);
+        audioMixer.SetFloat("fartVol", fartVol);
     }
 
     public void SetMusicVolume(float volume)
