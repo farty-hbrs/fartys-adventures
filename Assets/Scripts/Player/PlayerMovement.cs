@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private bool pressedJump;
     private bool moveX;
     private bool reachedLevelEnd;
+    private bool mayFartRandomly;
 
     private AudioManager am;
     
@@ -41,10 +42,15 @@ public class PlayerMovement : MonoBehaviour
         isJumping = false;
         moveX = true;
         reachedLevelEnd = false;
+        mayFartRandomly = true;
     }
 
     void FixedUpdate()
     {
+        if (mayFartRandomly && (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle") || anim.GetCurrentAnimatorStateInfo(0).IsName("Walk")))
+        {
+            StartCoroutine(RandomFart());
+        }
         if (reachedLevelEnd)
         {
             if(transform.position.x < nextLevelTrigger.transform.position.x && moveX)
@@ -123,6 +129,19 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    IEnumerator RandomFart()
+    {
+        mayFartRandomly = false;
+        int rand = Random.Range(1, 1000);
+        if (rand < 100)
+        {
+            Debug.Log("Fart();");
+            StartCoroutine(Fart());
+            yield return new WaitForSeconds(Random.Range(4, 10));
+        }
+        mayFartRandomly = true;
+    }
+
     IEnumerator Fart()
     {
         // Instantiate fart object with random rotation
@@ -132,9 +151,9 @@ public class PlayerMovement : MonoBehaviour
         fart.transform.eulerAngles = euler;
 
         // Play random fart sound
-        string soundName = "fart" + Random.Range(1, 1);
-        am.Play("fart1");
-        yield return new WaitForSeconds(1f);
+        string soundName = "fart" + Random.Range(1, 5);
+        am.Play(soundName);
+        yield return new WaitForSeconds(2f);
         Destroy(fart);
 
     }
