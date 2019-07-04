@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour, ResettableGameobject
     private bool hittable;
     private LevelManager levelManager;
     private bool facingLeft;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,16 @@ public class Enemy : MonoBehaviour, ResettableGameobject
             speed = Random.Range(3f, 10f);
         }
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+
+        anim = GetComponent<Animator>();
+        if(anim != null && speed > 0f)
+        {
+            anim.SetBool("isMoving", true);
+        }
+        else
+        {
+            anim.SetBool("isMoving", false);
+        }
     }
 
     // Update is called once per frame
@@ -47,7 +58,6 @@ public class Enemy : MonoBehaviour, ResettableGameobject
         {
             Flip();
         }
-
         lastPos = newPos;
     }
 
