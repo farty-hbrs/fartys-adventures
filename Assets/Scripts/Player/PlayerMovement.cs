@@ -135,7 +135,6 @@ public class PlayerMovement : MonoBehaviour
         int rand = Random.Range(1, 1000);
         if (rand < 100)
         {
-            Debug.Log("Fart();");
             StartCoroutine(Fart());
             yield return new WaitForSeconds(Random.Range(4, 10));
         }
