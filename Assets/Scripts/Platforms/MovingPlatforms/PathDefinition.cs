@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Thanks to 3DBuzz: https://www.youtube.com/watch?v=ZkGPoZOQE5Q&t=2257s
+
 public class PathDefinition : MonoBehaviour
 {
     public Transform[] points;

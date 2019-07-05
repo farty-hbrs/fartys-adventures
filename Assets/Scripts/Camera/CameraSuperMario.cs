@@ -98,6 +98,8 @@ public class CameraSuperMario : MonoBehaviour, ResettableGameobject
                 cameraY = playerY - (deltaY / 3);
             }
         }
+
+        // Always follow y position || set camera y position back to initial after reset
         if(!marioStyleY || resetted)
         {
             cameraY = playerY + deltaY;

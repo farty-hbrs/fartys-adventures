@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
     private bool moveX;
     private bool reachedLevelEnd;
     private bool mayFartRandomly;
-
     private AudioManager am;
     
 
@@ -51,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(RandomFart());
         }
+
         if (reachedLevelEnd)
         {
             if(transform.position.x < nextLevelTrigger.transform.position.x && moveX)
@@ -94,12 +94,13 @@ public class PlayerMovement : MonoBehaviour
             isJumping = true;
             rb.velocity = Vector2.up * jumpForce;
         }
+        // Landing
         else if (isJumping && isGrounded) {
             isJumping = false;
         }
         anim.SetBool("isJumping", isJumping);
     }
-    // Update is called once per frame
+    
     void Update()
     {
         if(CrossPlatformInputManager.GetButtonDown("Jump") && isGrounded && !isJumping)
@@ -132,6 +133,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator RandomFart()
     {
         mayFartRandomly = false;
+        Random.InitState(unchecked ((int) System.DateTime.Now.ToFileTime()));
         int rand = Random.Range(1, 1000);
         if (rand < 100)
         {

@@ -9,6 +9,7 @@ public class Coin : MonoBehaviour
 
     void Start()
     {
+        // When already collected -> destroy gameObject
         name = "coin-" + coinName;
         if(PlayerPrefs.GetInt(name) == 1)
         {

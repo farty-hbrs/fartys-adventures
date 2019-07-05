@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
+// Thanks to Brackeys: https://www.youtube.com/watch?v=6OT43pvUyfY
+
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
@@ -41,17 +43,5 @@ public class AudioManager : MonoBehaviour
         {
             s.source.Play();
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
