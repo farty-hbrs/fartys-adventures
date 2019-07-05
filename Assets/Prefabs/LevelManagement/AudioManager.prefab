@@ -50,3 +50,23 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 0
+  - name: fart2
+    clip: {fileID: 8300000, guid: 11c1db23890d85d4482cc18c51c93b1e, type: 3}
+    source: {fileID: 0}
+    volume: 1
+    pitch: 1
+    loop: 0
+  - name: fart3
+    clip: {fileID: 8300000, guid: 4b3eac4a522a51448be1c629bd0fdfcb, type: 3}
+    source: {fileID: 0}
+    volume: 1
+    pitch: 1
+    loop: 0
+  - name: fart4
+    clip: {fileID: 8300000, guid: fd770aa077404244fa2088e64ac9b55f, type: 3}
+    source: {fileID: 0}
+    volume: 1
+    pitch: 1
+    loop: 0
+  audioMixerGroup: {fileID: -4162746098301930792, guid: 2cebbfdb443e52747b566b2c069e4083,
+    type: 2}
